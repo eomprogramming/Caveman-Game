@@ -71,19 +71,22 @@ public class MapEditorFrame extends JFrame implements ActionListener
 		options = new JRadioButton[5];
 		for(int i=0; i<options.length;i++){			
 			options[i] = new JRadioButton();
-			options[i].setSize(150,30);
+			options[i].setSize(170,30);
 			options[i].setLocation(450,i*30+40);
 			options[i].setActionCommand(""+i);
 			options[i].addActionListener(this);
+			options[i].setBackground(Color.BLACK);
 			options[i].setIcon(new ImageIcon("pictures/obj"+i+".png"));
 			options[i].setRolloverIcon(options[i].getIcon());
-			options[i].setSelectedIcon(new ImageIcon("pictures/obj31.png"));
+			options[i].setSelectedIcon(options[i].getIcon());
 			add(options[i]);
 		}
 		options[0].setText("Rock");	
 		options[1].setText("Tree");
 		options[2].setText("Caveman");
 		options[3].setText("Grass is selected!");
+		options[3].setOpaque(true);
+		options[3].setForeground(getContentPane().getBackground());
 		options[4].setText("Exit");
 		ButtonGroup groupOptions = new ButtonGroup();
 		for(int i=0;i<options.length;i++)
@@ -174,11 +177,12 @@ public class MapEditorFrame extends JFrame implements ActionListener
 			open();
 		}else{
 			options[lastChosen].setOpaque(false);
+			options[lastChosen].setForeground(Color.BLACK);
 			options[lastChosen].setText(options[lastChosen].getText().substring(0,options[lastChosen].getText().indexOf(" ")));
 			int n = Integer.parseInt(e.getActionCommand());
 			options[n].setText(options[n].getText()+" is selected!");
 			options[n].setOpaque(true);
-			options[n].setBackground(Color.ORANGE);
+			options[n].setForeground(getContentPane().getBackground());
 			lastChosen = n;
 		}
 			

@@ -19,7 +19,6 @@ public class Board implements Serializable
 	
 	public static final int BOARD_SIZE = 13;
 
-	//fdsa
 	/**
 	 * constructs a Board object 
 	 */

@@ -26,7 +26,7 @@ public class InstructionsFrame extends JFrame implements ActionListener
 		JTextArea text = new JTextArea("How to play the Caveman Game!\n\n" +
 				"--Creating--\n\n" +
 				"First, select the item you want to place on your map. Then keep selecting " +
-				"where you want it to be placed on the board. Once your done, save it wherever" +
+				"where you want it to be placed on the board. Once your done, save it wherever " +
 				"you'd like, and your map is ready to be played!\n\n" +
 				"-- Playing--\n\n" +
 				"The goal of the game is to move the caveman " +
