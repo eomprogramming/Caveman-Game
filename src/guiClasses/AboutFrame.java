@@ -10,6 +10,7 @@ import javax.swing.JTextArea;
 @SuppressWarnings("serial")
 public class AboutFrame extends JFrame implements ActionListener
 {
+	
 	private JButton backButton;
 	
 	/**
