@@ -32,7 +32,7 @@ public class AboutFrame extends JFrame implements ActionListener
 				"Ian - Developer\n" +  
 				"Jason - Music\n" +
 				"Kenneth - Developer\n" + 
-				"Sunghyun - Graphics\n" + 
+				"Sunghyun - Head Graphics Designer\n" + 
 				"Sammnet - Developer\n" +
 				"Gordon - Developer\n" +
 				"Peter - Map Designer\n" +
