@@ -1,7 +1,5 @@
 package controlClasses;
 
-import java.io.Serializable;
-
 public class Boardx
 {
 	public int[][] board;
