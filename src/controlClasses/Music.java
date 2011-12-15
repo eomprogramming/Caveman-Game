@@ -29,7 +29,8 @@ public class Music extends Thread
         curPosition = Position.NORMAL;
     }
  
-    public void run() {
+    @SuppressWarnings("deprecation")
+	public void run() {
  
     	do
     	{

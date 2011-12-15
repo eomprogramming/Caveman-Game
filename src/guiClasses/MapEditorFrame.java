@@ -313,6 +313,7 @@ public class MapEditorFrame extends JFrame implements ActionListener
 			}
 	}
 
+	@SuppressWarnings("unused")
 	private int getChoice() {
 		if(options[0].isSelected())
 			return 0;

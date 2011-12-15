@@ -3,6 +3,7 @@ package controlClasses;
 
 import java.io.IOException;
 
+@SuppressWarnings("serial")
 public class EditBoard extends Board
 {
 	/**

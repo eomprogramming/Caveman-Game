@@ -3,6 +3,7 @@
                                              
 package controlClasses;
 
+@SuppressWarnings("serial")
 public class PlayBoard extends Board
 {
 	/**

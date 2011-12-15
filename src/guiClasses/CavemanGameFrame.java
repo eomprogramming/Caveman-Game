@@ -163,6 +163,7 @@ public class CavemanGameFrame extends JFrame implements KeyListener, ActionListe
 		checkWin();
 	}
 	
+	@SuppressWarnings("deprecation")
 	public void checkWin()
 	{
 		if(originalMap[board.getCavemanLoc().getRow()][board.getCavemanLoc().getCol()] == Board.EXIT)

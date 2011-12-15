@@ -10,7 +10,6 @@ import java.io.IOException;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
 import javax.swing.JFileChooser;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
@@ -77,10 +76,10 @@ public class HomePage extends JFrame implements ActionListener
 		quit.addActionListener(this);
 		add(quit);
 		
-//		JLabel version = new JLabel("SVN Revision 47");
-//		version.setFont(new Font("Times New Roman",Font.PLAIN,12));
-//		version.setBounds(0, 300, 150, 20);
-//		add(version);
+		JLabel version = new JLabel("V1.2");
+		version.setFont(new Font("Times New Roman",Font.PLAIN,12));
+		version.setBounds(20, 300, 150, 20);
+		add(version);
 		
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		setVisible(true);

@@ -55,6 +55,7 @@ public class OptionsFrame extends JFrame implements ActionListener
 	/**
 	 * determines what happens when buttons are pressed
 	 */
+	@SuppressWarnings("deprecation")
 	public void actionPerformed(ActionEvent e)
 	{
 		Object o = e.getSource();
