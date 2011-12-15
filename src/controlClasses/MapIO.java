@@ -45,10 +45,15 @@ public class MapIO {
 	 * @throws IOException if the file data falls off a cliff on their way to from the
 	 * filesystem to the program.
 	 */
-	public Board read() throws IOException {
+	public Boardx read() throws IOException {
 		try {
 			read = new ObjectInputStream(new FileInputStream(filename));
-			Board b = (Board) read.readObject();
+			Object o = read.readObject();
+			if(o instanceof Board)
+			{
+				return new Boardx(((Board) o).getBoard());
+			}
+			Boardx b = new Boardx((int[][]) o);
 			read.close();
 			return b;
 		} catch (ClassNotFoundException e) {
@@ -67,9 +72,9 @@ public class MapIO {
 	 * @throws IOException if the data is attacked by highwaymen on the way to the
 	 * filesystem.
 	 */
-	public void write(Board b) throws IOException {
+	public void write(Boardx b) throws IOException {
 		write = new ObjectOutputStream(new FileOutputStream(filename));
-		write.writeObject(b);
+		write.writeObject(b.getBoard());
 		write.flush();
 		write.close();
 	}

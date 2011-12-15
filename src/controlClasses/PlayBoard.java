@@ -3,8 +3,7 @@
                                              
 package controlClasses;
 
-@SuppressWarnings("serial")
-public class PlayBoard extends Board
+public class PlayBoard extends Boardx
 {
 	/**
 	 * constructor

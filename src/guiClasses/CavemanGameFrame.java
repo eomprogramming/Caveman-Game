@@ -134,27 +134,27 @@ public class CavemanGameFrame extends JFrame implements KeyListener, ActionListe
 		{
 			for(int j = 0; j < board.getSize(); j++)
 			{
-				if(board.get(i, j) == Board.EMPTY)
+				if(board.get(i, j) == Boardx.EMPTY)
 				{
 					map[i][j].setIcon(new ImageIcon("pictures/obj3.png"));
 				}
-				else if(board.get(i, j) == Board.CAVEMAN)
+				else if(board.get(i, j) == Boardx.CAVEMAN)
 				{
 					map[i][j].setIcon(new ImageIcon("pictures/obj2.png"));
 				}
-				else if(board.get(i, j) == Board.BOULDER)
+				else if(board.get(i, j) == Boardx.BOULDER)
 				{
 					map[i][j].setIcon(new ImageIcon("pictures/obj0.png"));
 				}
-				else if(board.get(i, j) == Board.WALL)
+				else if(board.get(i, j) == Boardx.WALL)
 				{
 					map[i][j].setIcon(new ImageIcon("pictures/obj1.png"));
 				}
-				else if(board.get(i, j) == Board.EXIT)
+				else if(board.get(i, j) == Boardx.EXIT)
 				{
 					map[i][j].setIcon(new ImageIcon("pictures/obj4.png"));
 				}
-				else if(board.get(i, j) == Board.HOLE)
+				else if(board.get(i, j) == Boardx.HOLE)
 				{
 					map[i][j].setIcon(new ImageIcon("pictures/obj5.png"));
 				}
@@ -166,7 +166,7 @@ public class CavemanGameFrame extends JFrame implements KeyListener, ActionListe
 	@SuppressWarnings("deprecation")
 	public void checkWin()
 	{
-		if(originalMap[board.getCavemanLoc().getRow()][board.getCavemanLoc().getCol()] == Board.EXIT)
+		if(originalMap[board.getCavemanLoc().getRow()][board.getCavemanLoc().getCol()] == Boardx.EXIT)
 		{
 			if(Music.playGameSounds)
 			{
@@ -191,22 +191,22 @@ public class CavemanGameFrame extends JFrame implements KeyListener, ActionListe
 	{
 		if(e.getKeyCode() == UP_ARROW)
 		{
-			if(board.moveCaveman(Board.UP))
+			if(board.moveCaveman(Boardx.UP))
 				update();
 		}
 		else if(e.getKeyCode() == DOWN_ARROW)
 		{
-			if(board.moveCaveman(Board.DOWN))
+			if(board.moveCaveman(Boardx.DOWN))
 				update();
 		}
 		else if(e.getKeyCode() == LEFT_ARROW)
 		{
-			if(board.moveCaveman(Board.LEFT))
+			if(board.moveCaveman(Boardx.LEFT))
 				update();
 		}
 		else if(e.getKeyCode() == RIGHT_ARROW)
 		{
-			if(board.moveCaveman(Board.RIGHT))
+			if(board.moveCaveman(Boardx.RIGHT))
 				update();
 		}
 	}

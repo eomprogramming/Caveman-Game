@@ -3,8 +3,7 @@ package controlClasses;
 
 import java.io.IOException;
 
-@SuppressWarnings("serial")
-public class EditBoard extends Board
+public class EditBoard extends Boardx
 {
 	/**
 	 * constructor
@@ -91,7 +90,7 @@ public class EditBoard extends Board
 	{
 		MapIO writer = new MapIO (fileName); 
 		
-		writer.write(new Board(this.getBoard()));
+		writer.write(new Boardx(this.getBoard()));
 		return false;
 	}
 }

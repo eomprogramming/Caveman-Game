@@ -137,17 +137,17 @@ public class MapEditorFrame extends JFrame implements ActionListener
 			int col = Integer.parseInt(e.getActionCommand().substring(e.getActionCommand().indexOf(",")+1,e.getActionCommand().length()));
 			Loc loc = new Loc(row,col);
 			if(options[0].isSelected())
-				editBoard.place(Board.BOULDER, loc);
+				editBoard.place(Boardx.BOULDER, loc);
 			else if(options[1].isSelected())
-				editBoard.place(Board.WALL, loc);
+				editBoard.place(Boardx.WALL, loc);
 			else if(options[2].isSelected())
 				editBoard.setCavemanLoc(loc);
 			else if(options[3].isSelected())
-				editBoard.place(Board.EMPTY, loc);
+				editBoard.place(Boardx.EMPTY, loc);
 			else if(options[4].isSelected())
-				editBoard.place(Board.EXIT, loc);
+				editBoard.place(Boardx.EXIT, loc);
 			else if(options[5].isSelected())
-				editBoard.place(Board.HOLE, loc);
+				editBoard.place(Boardx.HOLE, loc);
 				
 			update();
 		}else if(e.getSource()==quitButton)
@@ -245,7 +245,7 @@ public class MapEditorFrame extends JFrame implements ActionListener
 		else
 		{
 			try {
-				m.write(new Board(editBoard.getBoard()));
+				m.write(new Boardx(editBoard.getBoard()));
 			} catch (IOException e1) {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
@@ -282,7 +282,7 @@ public class MapEditorFrame extends JFrame implements ActionListener
 				if(!s.endsWith(".map"))
 					s += ".map";
 				m = new MapIO(s);
-				m.write(new Board(editBoard.getBoard()));
+				m.write(new Boardx(editBoard.getBoard()));
 				saved = true;
 			}
 		} catch (HeadlessException e1) {
@@ -298,17 +298,17 @@ public class MapEditorFrame extends JFrame implements ActionListener
 		for(int i=0;i<13;i++)
 			for(int j=0;j<13;j++)
 			{
-				if(editBoard.get(i, j) == Board.EMPTY)
+				if(editBoard.get(i, j) == Boardx.EMPTY)
 					map[i][j].setIcon(new ImageIcon("pictures/obj3.png"));
-				else if(editBoard.get(i, j) == Board.WALL)
+				else if(editBoard.get(i, j) == Boardx.WALL)
 					map[i][j].setIcon(new ImageIcon("pictures/obj1.png"));
-				else if(editBoard.get(i, j) == Board.BOULDER)
+				else if(editBoard.get(i, j) == Boardx.BOULDER)
 					map[i][j].setIcon(new ImageIcon("pictures/obj0.png"));
-				else if(editBoard.get(i, j) == Board.CAVEMAN)
+				else if(editBoard.get(i, j) == Boardx.CAVEMAN)
 					map[i][j].setIcon(new ImageIcon("pictures/obj2.png"));
-				else if(editBoard.get(i, j) == Board.EXIT)
+				else if(editBoard.get(i, j) == Boardx.EXIT)
 					map[i][j].setIcon(new ImageIcon("pictures/obj4.png"));
-				else if(editBoard.get(i, j) == Board.HOLE)
+				else if(editBoard.get(i, j) == Boardx.HOLE)
 					map[i][j].setIcon(new ImageIcon("pictures/obj5.png"));
 			}
 	}

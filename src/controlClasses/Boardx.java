@@ -1,60 +1,8 @@
 package controlClasses;
 
 import java.io.Serializable;
-/**
- *THIS CLASS IS FOR FILEIO ONLY!!!!!!!!!!!!!!!!!!!!!!!!!!
- *USE THE Boardx CLASS INSTEAD!!!!!!!!!!!!
- *
- *DO NOT EDIT!!!!!!!!!!!!!!
- *DO NOT EDIT!!!!!!!!!!!!!!
- *DO NOT EDIT!!!!!!!!!!!!!!
- *DO NOT EDIT!!!!!!!!!!!!!!
- *DO NOT EDIT!!!!!!!!!!!!!!
- *DO NOT EDIT!!!!!!!!!!!!!!
- *DO NOT EDIT!!!!!!!!!!!!!!
- *DO NOT EDIT!!!!!!!!!!!!!!
- *DO NOT EDIT!!!!!!!!!!!!!!
- *DO NOT EDIT!!!!!!!!!!!!!!
- *DO NOT EDIT!!!!!!!!!!!!!!
- *DO NOT EDIT!!!!!!!!!!!!!!
- *DO NOT EDIT!!!!!!!!!!!!!!
- *DO NOT EDIT!!!!!!!!!!!!!!
- *DO NOT EDIT!!!!!!!!!!!!!!
- *DO NOT EDIT!!!!!!!!!!!!!!
- *DO NOT EDIT!!!!!!!!!!!!!!
- *
- *DO NOT EDIT!!!!!!!!!!!!!!
- *DO NOT EDIT!!!!!!!!!!!!!!
- *DO NOT EDIT!!!!!!!!!!!!!!
- *DO NOT EDIT!!!!!!!!!!!!!!
- *DO NOT EDIT!!!!!!!!!!!!!!
- *
- *DO NOT EDIT!!!!!!!!!!!!!!
- *DO NOT EDIT!!!!!!!!!!!!!!
- *DO NOT EDIT!!!!!!!!!!!!!!
- *DO NOT EDIT!!!!!!!!!!!!!!
- *DO NOT EDIT!!!!!!!!!!!!!!
- *DO NOT EDIT!!!!!!!!!!!!!!
- *DO NOT EDIT!!!!!!!!!!!!!!
- *
- *DO NOT EDIT!!!!!!!!!!!!!!
- *DO NOT EDIT!!!!!!!!!!!!!!
- *DO NOT EDIT!!!!!!!!!!!!!!
- *DO NOT EDIT!!!!!!!!!!!!!!
- *DO NOT EDIT!!!!!!!!!!!!!!
- *DO NOT EDIT!!!!!!!!!!!!!!
- *
- *DO NOT EDIT!!!!!!!!!!!!!!
- *DO NOT EDIT!!!!!!!!!!!!!!
- *DO NOT EDIT!!!!!!!!!!!!!!
- *
- *
- *
- *THIS CLASS IS FOR FILEIO ONLY!!!!!!!!!!!!!!!!!!!!!!!!!!
- *USE THE Boardx CLASS INSTEAD!!!!!!!!!!!!
- */
-@SuppressWarnings("serial")
-public class Board implements Serializable
+
+public class Boardx
 {
 	public int[][] board;
 	
@@ -63,6 +11,7 @@ public class Board implements Serializable
 	public static final int BOULDER = 2;
 	public static final int WALL = 3;
 	public static final int EXIT = 4;
+	public static final int HOLE = 5;
 	
 	public static final int LEFT = 1;
 	public static final int RIGHT = 2;
@@ -74,7 +23,7 @@ public class Board implements Serializable
 	/**
 	 * constructs a Board object 
 	 */
-	public Board()
+	public Boardx()
 	{
 		board = new int[BOARD_SIZE][BOARD_SIZE];
 		for(int i = 0; i < BOARD_SIZE; i++)
@@ -88,7 +37,7 @@ public class Board implements Serializable
 	 * constructs a Board object 
 	 * @param board
 	 */
-	public Board(int[][] board)
+	public Boardx(int[][] board)
 	{
 		this.board = board;
 	}
@@ -132,7 +81,7 @@ public class Board implements Serializable
 	 */
 	public void set(Loc l, int a)
 	{
-		if(a >= EMPTY && a <= EXIT)
+		if(a >= EMPTY && a <= HOLE)
 			board[l.getRow()][l.getCol()] = a;
 	}
 	
@@ -184,7 +133,7 @@ public class Board implements Serializable
 					caveman++;
 				if(this.get(i,j)==EXIT)
 					exit++;
-				if(this.get(i,j)<0||this.get(i,j)>4)
+				if(this.get(i,j)<0||this.get(i,j)>5)
 					error++;
 			}
 		}
@@ -240,7 +189,7 @@ public class Board implements Serializable
 	 * @param b
 	 * @return if the two boards are equal
 	 */
-	public boolean equals(Board b)
+	public boolean equals(Boardx b)
 	{
 		if(b.getBoard()==this.getBoard())
 			return true;
