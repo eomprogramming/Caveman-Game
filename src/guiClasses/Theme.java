@@ -3,7 +3,9 @@ package guiClasses;
 import java.awt.*;
 import javax.swing.*;
 import javax.swing.UIManager.LookAndFeelInfo;
-
+/*
+ * TROLOLOLOLOLOLOLOLOLOLOL
+ */
 public class Theme {
 	public static void applyTheme(JButton b){
 		b.setBackground(new Color(196,253,3));
