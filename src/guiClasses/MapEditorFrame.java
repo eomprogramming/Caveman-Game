@@ -28,6 +28,7 @@ public class MapEditorFrame extends JFrame implements ActionListener
 	 * obj2 = caveman
 	 * obj3 = grass(empty)
 	 * obj4 = exit
+	 * obj5 = hole
 	 */
 	
 	/**
@@ -68,7 +69,7 @@ public class MapEditorFrame extends JFrame implements ActionListener
 		}
 		
 		//makes the options for which block to use
-		options = new JRadioButton[5];
+		options = new JRadioButton[6];
 		for(int i=0; i<options.length;i++){			
 			options[i] = new JRadioButton();
 			options[i].setSize(170,30);
@@ -88,6 +89,7 @@ public class MapEditorFrame extends JFrame implements ActionListener
 		options[3].setOpaque(true);
 		options[3].setForeground(getContentPane().getBackground());
 		options[4].setText("Exit");
+		options[5].setText("Hole");
 		ButtonGroup groupOptions = new ButtonGroup();
 		for(int i=0;i<options.length;i++)
 			groupOptions.add(options[i]);
@@ -100,22 +102,22 @@ public class MapEditorFrame extends JFrame implements ActionListener
 		add(quitButton);
 
 		saveButton = new JButton();
-		saveButton.setBounds(320 + shiftX, 200, 80, 40);
+		saveButton.setBounds(320 + shiftX, 230, 80, 40);
 		saveButton.setText("SAVE");
 		saveButton.addActionListener(this);
 		add(saveButton);
 		saveAsButton = new JButton();
-		saveAsButton.setBounds(410 + shiftX, 200, 100, 40);
+		saveAsButton.setBounds(410 + shiftX, 230, 100, 40);
 		saveAsButton.setText("SAVE AS");
 		saveAsButton.addActionListener(this);
 		add(saveAsButton);
 		openFileButton = new JButton();
-		openFileButton.setBounds(410 + shiftX, 250, 100, 40);
+		openFileButton.setBounds(410 + shiftX, 280, 100, 40);
 		openFileButton.setText("OPEN FILE");
 		openFileButton.addActionListener(this);
 		add(openFileButton);
 		newMapButton = new JButton();
-		newMapButton.setBounds(320 + shiftX, 250, 80, 40);
+		newMapButton.setBounds(320 + shiftX, 280, 80, 40);
 		newMapButton.setText("RESET");
 		newMapButton.addActionListener(this);
 		add(newMapButton);
@@ -142,8 +144,10 @@ public class MapEditorFrame extends JFrame implements ActionListener
 				editBoard.setCavemanLoc(loc);
 			else if(options[3].isSelected())
 				editBoard.place(Board.EMPTY, loc);
-			else
+			else if(options[4].isSelected())
 				editBoard.place(Board.EXIT, loc);
+			else if(options[5].isSelected())
+				editBoard.place(Board.HOLE, loc);
 				
 			update();
 		}else if(e.getSource()==quitButton)
@@ -304,18 +308,22 @@ public class MapEditorFrame extends JFrame implements ActionListener
 					map[i][j].setIcon(new ImageIcon("pictures/obj2.png"));
 				else if(editBoard.get(i, j) == Board.EXIT)
 					map[i][j].setIcon(new ImageIcon("pictures/obj4.png"));
+				else if(editBoard.get(i, j) == Board.HOLE)
+					map[i][j].setIcon(new ImageIcon("pictures/obj5.png"));
 			}
 	}
 
 	private int getChoice() {
 		if(options[0].isSelected())
 			return 0;
-		else if(options[1].isSelected())
+		if(options[1].isSelected())
 			return 1;
-		else if(options[2].isSelected())
+		if(options[2].isSelected())
 			return 2;
-		else if(options[3].isSelected())
+		if(options[3].isSelected())
 			return 3;
-		return 4;
+		if(options[4].isSelected())
+			return 4;
+		return 5;
 	}
 }

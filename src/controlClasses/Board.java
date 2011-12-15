@@ -11,6 +11,7 @@ public class Board implements Serializable
 	public static final int BOULDER = 2;
 	public static final int WALL = 3;
 	public static final int EXIT = 4;
+	public static final int HOLE = 5;
 	
 	public static final int LEFT = 1;
 	public static final int RIGHT = 2;
@@ -80,7 +81,7 @@ public class Board implements Serializable
 	 */
 	public void set(Loc l, int a)
 	{
-		if(a >= EMPTY && a <= EXIT)
+		if(a >= EMPTY && a <= HOLE)
 			board[l.getRow()][l.getCol()] = a;
 	}
 	
@@ -132,7 +133,7 @@ public class Board implements Serializable
 					caveman++;
 				if(this.get(i,j)==EXIT)
 					exit++;
-				if(this.get(i,j)<0||this.get(i,j)>4)
+				if(this.get(i,j)<0||this.get(i,j)>5)
 					error++;
 			}
 		}

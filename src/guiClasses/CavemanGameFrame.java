@@ -43,6 +43,7 @@ public class CavemanGameFrame extends JFrame implements KeyListener, ActionListe
 	 * obj2 = caveman
 	 * obj3 = grass(empty)
 	 * obj4 = exit
+	 * obj5 = hole
 	 */
 	
 	/**
@@ -152,6 +153,10 @@ public class CavemanGameFrame extends JFrame implements KeyListener, ActionListe
 				else if(board.get(i, j) == Board.EXIT)
 				{
 					map[i][j].setIcon(new ImageIcon("pictures/obj4.png"));
+				}
+				else if(board.get(i, j) == Board.HOLE)
+				{
+					map[i][j].setIcon(new ImageIcon("pictures/obj5.png"));
 				}
 			}
 		}

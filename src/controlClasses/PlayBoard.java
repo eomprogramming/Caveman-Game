@@ -32,47 +32,7 @@ public class PlayBoard extends Board
 	 */
 	public boolean pushBoulder(Loc location, int direction)
 	{
-		try{
-			if(direction==UP){
-				if(board[location.getRow()][location.getCol()+1]==EMPTY){
-					board[location.getRow()][location.getCol()+1]=BOULDER;
-					board[location.getRow()][location.getCol()]=EMPTY;
-					moveCaveman(UP);
-				return true;
-				}
-			}
-			
-			if(direction==DOWN){
-				if(board[location.getRow()][location.getCol()-1]==EMPTY){
-					board[location.getRow()][location.getCol()-1]=BOULDER;
-					board[location.getRow()][location.getCol()]=EMPTY;
-					moveCaveman(DOWN);
-				return true;
-				}
-			}
-			
-			if(direction==RIGHT){
-				if(board[location.getRow()+1][location.getCol()]==EMPTY){
-					board[location.getRow()+1][location.getCol()]=BOULDER;
-					board[location.getRow()][location.getCol()]=EMPTY;
-					moveCaveman(RIGHT);
-				return true;
-				}
-			}
-			
-			if(direction==LEFT){
-				if(board[location.getRow()-1][location.getCol()]==EMPTY){
-					board[location.getRow()-1][location.getCol()]=BOULDER;
-					board[location.getRow()][location.getCol()]=EMPTY;
-					moveCaveman(LEFT);
-					return true;
-				}
-			}
-		}
-		catch(ArrayIndexOutOfBoundsException e){
-			return false;
-		}
-		return false;
+		return pushBoulder(location.getRow(), location.getCol(), direction);
 	}
 	
 	/**
@@ -91,11 +51,21 @@ public class PlayBoard extends Board
 					board[row][column]=EMPTY;
 					return true;
 				}
+				if(board[row][column+1]==HOLE){
+					board[row][column+1]=EMPTY;
+					board[row][column]=EMPTY;
+					return true;
+				}
 			}
 			
 			if(direction==LEFT){
 				if(board[row][column-1]==EMPTY){
 					board[row][column-1]=BOULDER;
+					board[row][column]=EMPTY;
+				return true;
+				}
+				if(board[row][column-1]==HOLE){
+					board[row][column-1]=EMPTY;
 					board[row][column]=EMPTY;
 				return true;
 				}
@@ -107,11 +77,21 @@ public class PlayBoard extends Board
 					board[row][column]=EMPTY;
 				return true;
 				}
+				if(board[row+1][column]==HOLE){
+					board[row+1][column]=EMPTY;
+					board[row][column]=EMPTY;
+				return true;
+				}
 			}
 			
 			if(direction==UP){
 				if(board[row-1][column]==EMPTY){
 					board[row-1][column]=BOULDER;
+					board[row][column]=EMPTY;
+					return true;
+				}
+				if(board[row-1][column]==HOLE){
+					board[row-1][column]=EMPTY;
 					board[row][column]=EMPTY;
 					return true;
 				}
