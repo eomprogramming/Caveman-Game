@@ -4,7 +4,7 @@ import java.awt.*;
 import javax.swing.*;
 import javax.swing.UIManager.LookAndFeelInfo;
 /*
- * TROLOLOLOLOLOLOLOLOLOLOL
+ * TROLOLOLOLOLOLOLOLOLOLOLOL
  */
 public class Theme {
 	public static void applyTheme(JButton b){
