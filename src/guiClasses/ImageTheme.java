@@ -1,8 +1,9 @@
 package guiClasses;
 
-import java.io.File;
 import java.util.HashMap;
 import java.util.Map;
+
+import javax.swing.ImageIcon;
 
 /**
  * Represents a theme for the images in the game.
@@ -12,22 +13,27 @@ import java.util.Map;
 public class ImageTheme {
 	private static Map<String, ImageTheme> themes =
 		new HashMap<String, ImageTheme>();
+	private Map<ImageUse, ImageIcon> icons = new HashMap<ImageUse, ImageIcon>();
 	
 	/**
 	 * Creates a new theme. Did I really have to explain that?
 	 * @param src The directory to get the images from.
 	 */
-	protected ImageTheme(File src) {
-		if (!src.isDirectory())
-			throw new IllegalArgumentException(
-					"Only directories can be passed to ImageTheme()");
+	protected ImageTheme(String src) {
+		for (ImageUse i: ImageUse.values()) {
+			icons.put(i, new ImageIcon(src + "/" + i.getFile() + ".png"));
+		}
+	}
+	
+	public ImageIcon getImage(ImageUse use) {
+		return icons.get(use);
 	}
 	
 	public static ImageTheme getThemeByName(String name) {
 		if (themes.containsKey(name)) {
 			return themes.get(name);
 		} else {
-			ImageTheme tmp = new ImageTheme(new File("pictures/" + name));
+			ImageTheme tmp = new ImageTheme("pictures/" + name);
 			themes.put(name, tmp);
 			return tmp;
 		}
