@@ -94,24 +94,14 @@ public class HomePage extends JFrame implements ActionListener
 		if(o == playGame) {
 			try {
 				JFileChooser choose = new JFileChooser();
-				if(IO.openInputFile("options.hao"))
-				{
-					try {
-						choose.setSelectedFile(new File(IO.readLine()));
-						IO.closeInputFile();
-					} catch (IOException e1) {
-						// TODO Auto-generated catch block
-						e1.printStackTrace();
-					}
-				}
+				choose.setSelectedFile(new
+						File(ConfigIO.getDefaultConfigIO().getLastFile()));
 				FileNameExtensionFilter filter = new FileNameExtensionFilter("Map File (*.map)", "map");
 				choose.addChoosableFileFilter(filter);
 				choose.setAcceptAllFileFilterUsed(false);
 				if (choose.showOpenDialog(this) == JFileChooser.APPROVE_OPTION) {
 					String s = choose.getSelectedFile().getPath();
-					IO.createOutputFile("options.hao");
-					IO.print(s);
-					IO.closeOutputFile();
+					ConfigIO.getDefaultConfigIO().setLastFile(s);
 					try{
 						new CavemanGameFrame(new PlayBoard (new MapIO(s).read().getBoard()));
 						dispose();
@@ -136,25 +126,15 @@ public class HomePage extends JFrame implements ActionListener
 		else if(o == editMap)
 		{
 			JFileChooser choose = new JFileChooser();
-			if(IO.openInputFile("options.hao"))
-			{
-				try {
-					choose.setSelectedFile(new File(IO.readLine()));
-					IO.closeInputFile();
-				} catch (IOException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
-				}
-			}
+			choose.setSelectedFile(new
+					File(ConfigIO.getDefaultConfigIO().getLastFile()));
 			//choose.setSelectedFile(file);
 			FileNameExtensionFilter filter = new FileNameExtensionFilter("Map File (*.map)", "map");
 			choose.addChoosableFileFilter(filter);
 			choose.setAcceptAllFileFilterUsed(false);
 			if (choose.showOpenDialog(this) == JFileChooser.APPROVE_OPTION) {
 				String s = choose.getSelectedFile().getPath();
-				IO.createOutputFile("options.hao");
-				IO.print(s);
-				IO.closeOutputFile();
+				ConfigIO.getDefaultConfigIO().setLastFile(s);
 				System.out.println(s);
 				try {
 					if(s.equals(""))

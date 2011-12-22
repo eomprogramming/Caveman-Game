@@ -12,6 +12,7 @@ import java.io.*;
  * 
  */
 public class ConfigIO {
+	private static ConfigIO defaultCIO = null;
 	private File configFile;
 	private LineNumberReader read;
 	
@@ -43,14 +44,17 @@ public class ConfigIO {
 	 * @return The ConfigIO
 	 */
 	public static ConfigIO getDefaultConfigIO() {
-		return new ConfigIO(new File(System.getProperty("user.home")
-				+ "/.caveman.haox"));
+		if (defaultCIO == null) {
+			defaultCIO = new ConfigIO(new File(System.getProperty("user.home")
+					+ "/.caveman.haox"));
+		}
+		return defaultCIO;
 	}
 	
 	/**
 	 * Get the path of the last file opened in the map editor.
 	 * 
-	 * @return the path, or <b>null</b> to indicate a non-existant value or
+	 * @return the path, or empty String to indicate a non-existant value or
 	 *         error.
 	 */
 	public String getLastFile() {
@@ -61,6 +65,9 @@ public class ConfigIO {
 			} catch (IOException e) {
 				// Leave lastFile as null, to indicate error
 			}
+		}
+		if (lastFile == null) { //Still null == error in first block
+			return "";
 		}
 		return lastFile;
 	}
@@ -77,7 +84,7 @@ public class ConfigIO {
 	/**
 	 * Get the user's preferred default theme.
 	 * 
-	 * @return the name of the default theme, or <b>null</b> to indicate a
+	 * @return the name of the default theme, or an empty string to indicate a
 	 *         missing value or error.
 	 */
 	public String getDefaultTheme() {
@@ -88,6 +95,9 @@ public class ConfigIO {
 			} catch (IOException e) {
 				// Leave defaultTheme as null, to indicate error
 			}
+		}
+		if (defaultTheme == null) { //Still null == error in first block
+			return "";
 		}
 		return defaultTheme;
 	}
