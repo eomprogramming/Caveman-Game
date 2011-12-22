@@ -5,12 +5,14 @@ import java.awt.HeadlessException;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JFileChooser;
+import javax.swing.JOptionPane;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
 import controlClasses.*;
@@ -81,6 +83,18 @@ public class HomePage extends JFrame implements ActionListener
 		version.setBounds(20, 300, 150, 20);
 		add(version);
 		
+		if(IO.readObject("tournament.hao") == null)
+		{
+			String name = JOptionPane.showInputDialog("what is your name?");
+			Tournament t = new Tournament(name);
+			try {
+				IO.writeObject(t, "tournament.hao");
+			} catch (IOException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+		}
+		
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		setVisible(true);
 	}
@@ -113,7 +127,7 @@ public class HomePage extends JFrame implements ActionListener
 					IO.print(s);
 					IO.closeOutputFile();
 					try{
-						new CavemanGameFrame(new PlayBoard (new MapIO(s).read().getBoard()));
+						new CavemanGameFrame(new PlayBoard (new MapIO(s).read().getBoard()), Integer.parseInt(choose.getSelectedFile().getName().substring(0, 1)));
 						dispose();
 					}catch(NullPointerException exp){}
 				}

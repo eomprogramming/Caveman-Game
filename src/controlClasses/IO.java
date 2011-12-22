@@ -2,10 +2,14 @@ package controlClasses;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.io.PrintWriter;
 
 /**
@@ -142,5 +146,35 @@ public class IO
 	{
 		fileIn.close();
 	}
+	
+	private static ObjectInputStream input;
+    private static ObjectOutputStream output;
+    
+    /**
+     * Reads an Object with object serialization
+     * @return		The object that was read from file
+     */
+    public static Object readObject(String file){
+    	try {
+			input = new ObjectInputStream(new FileInputStream(file));
+			Object object;
+			object = input.readObject();
+			input.close();
+	    	return object;
+		} catch (Exception e) {			
+			return null;
+		} 
+    	
+    }
+    
+    /**
+     * Writes an Object with object serialization
+     */
+    public static void writeObject(Object o, String file) throws IOException{
+        output = new ObjectOutputStream(new FileOutputStream(file));
+    	output.writeObject(o);
+    	output.flush();
+    	output.close();
+    }
 	
 } // end class

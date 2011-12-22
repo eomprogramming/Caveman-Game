@@ -6,6 +6,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 
 import javax.swing.ImageIcon;
@@ -37,6 +38,7 @@ public class CavemanGameFrame extends JFrame implements KeyListener, ActionListe
 	private static final int RIGHT_ARROW = 39;
 	public static final int BLOCK_SIZE = 30;
 	
+	private int a;
 	/*
 	 * obj0 = rock(boulder)
 	 * obj1 = tree(wall)
@@ -50,11 +52,13 @@ public class CavemanGameFrame extends JFrame implements KeyListener, ActionListe
 	 * constructor
 	 * @param gameBoard
 	 */
-	public CavemanGameFrame(PlayBoard playBoard)
+	public CavemanGameFrame(PlayBoard playBoard, int a)
 	{
 		super("Caveman Game");
 		setLayout(null);
 
+		this.a = a;
+		
 		Theme.applyFrameTheme(this);
 		
 		if(playBoard.isValidBoard())
@@ -175,7 +179,18 @@ public class CavemanGameFrame extends JFrame implements KeyListener, ActionListe
 				RunCavemanGame.victorySong = new Music(RunCavemanGame.victorySongFilename);
 				RunCavemanGame.victorySong.start();
 			}
-			JOptionPane.showMessageDialog(this, "You win!!!");
+			JOptionPane.showMessageDialog(this, "You beat map " + a);
+			
+			Tournament t = null;
+			t = (Tournament) IO.readObject("tournament.hao");
+			t.setBeaten(true, a);
+			try {
+				IO.writeObject(t, "tournament.hao");
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
 			new HomePage();
 			dispose();
 		}
@@ -230,7 +245,7 @@ public class CavemanGameFrame extends JFrame implements KeyListener, ActionListe
 				IO.openInputFile("options.hao");
 				String s = IO.readLine();
 				IO.closeInputFile();
-				new CavemanGameFrame(new PlayBoard(new MapIO(s).read().getBoard()));
+				new CavemanGameFrame(new PlayBoard(new MapIO(s).read().getBoard()), a);
 				dispose();
 			} catch (IOException e1) {
 				// TODO Auto-generated catch block
@@ -258,7 +273,7 @@ public class CavemanGameFrame extends JFrame implements KeyListener, ActionListe
 					IO.createOutputFile("options.hao");
 					IO.print(s);
 					IO.closeOutputFile();
-					new CavemanGameFrame(new PlayBoard (new MapIO(s).read().getBoard()));
+					new CavemanGameFrame(new PlayBoard (new MapIO(s).read().getBoard()), a);
 					dispose();
 				}
 			} catch (HeadlessException e1) {
