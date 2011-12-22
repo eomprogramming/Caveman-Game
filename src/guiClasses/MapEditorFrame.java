@@ -200,16 +200,8 @@ public class MapEditorFrame extends JFrame implements ActionListener
 	{
 		try {
 			JFileChooser choose = new JFileChooser();
-			if(IO.openInputFile("options.hao"))
-			{
-				try {
-					choose.setSelectedFile(new File(IO.readLine()));
-					IO.closeInputFile();
-				} catch (IOException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
-				}
-			}
+			choose.setSelectedFile(new
+					File(ConfigIO.getDefaultConfigIO().getLastFile()));
 			FileNameExtensionFilter filter = new FileNameExtensionFilter("Map File (*.map)", "map");
 			choose.addChoosableFileFilter(filter);
 			choose.setAcceptAllFileFilterUsed(false);
@@ -217,9 +209,7 @@ public class MapEditorFrame extends JFrame implements ActionListener
 				String s = choose.getSelectedFile().getPath();
 				if(!s.equals(""))
 				{
-					IO.createOutputFile("options.hao");
-					IO.print(s);
-					IO.closeOutputFile();
+					ConfigIO.getDefaultConfigIO().setDefaultTheme(s);
 					m = new MapIO(s);
 					editBoard = new EditBoard (m.read().getBoard());
 					update();
@@ -261,24 +251,14 @@ public class MapEditorFrame extends JFrame implements ActionListener
 	{
 		try {
 			JFileChooser choose = new JFileChooser();
-			if(IO.openInputFile("options.hao"))
-			{
-				try {
-					choose.setSelectedFile(new File(IO.readLine()));
-					IO.closeInputFile();
-				} catch (IOException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
-				}
-			}
+			choose.setSelectedFile(new
+					File(ConfigIO.getDefaultConfigIO().getLastFile()));
 			FileNameExtensionFilter filter = new FileNameExtensionFilter("Map File (*.map)", "map");
 			choose.addChoosableFileFilter(filter);
 			choose.setAcceptAllFileFilterUsed(false);
 			if(choose.showSaveDialog(this) == JFileChooser.APPROVE_OPTION) {
 				String s = choose.getSelectedFile().getPath();
-				IO.createOutputFile("options.hao");
-				IO.print(s);
-				IO.closeOutputFile();
+				ConfigIO.getDefaultConfigIO().setLastFile(s);
 				if(!s.endsWith(".map"))
 					s += ".map";
 				m = new MapIO(s);
