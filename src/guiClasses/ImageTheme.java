@@ -1,9 +1,13 @@
 package guiClasses;
 
+import java.io.File;
 import java.util.HashMap;
+import java.util.LinkedList;
 import java.util.Map;
 
 import javax.swing.ImageIcon;
+
+import controlClasses.*;
 
 /**
  * Represents a theme for the images in the game.
@@ -25,10 +29,20 @@ public class ImageTheme {
 		}
 	}
 	
+	/**
+	 * Get the ImageIcon for the image associated with the given ImageUse
+	 * @param use the ImageUse for which to return the icon
+	 * @return The ImageIcon for the given use.
+	 */
 	public ImageIcon getImage(ImageUse use) {
 		return icons.get(use);
 	}
 	
+	/**
+	 * Gets the ImageTheme with the passed name.
+	 * @param name the name of the theme to return
+	 * @return The theme with that name.
+	 */
 	public static ImageTheme getThemeByName(String name) {
 		if (themes.containsKey(name)) {
 			return themes.get(name);
@@ -39,46 +53,31 @@ public class ImageTheme {
 		}
 	}
 	
+	/**
+	 * Get the user's default theme.
+	 * @return The ImageTheme corresponding to the default theme.`
+	 */
 	public static ImageTheme getDefaultTheme() {
-		return getThemeByName("original");
+		String s = ConfigIO.getDefaultConfigIO().getDefaultTheme();
+		return getThemeByName(s.equals("") ? "original" : s);
 	}
 	
 	/**
-	 * This enumerated type represents an individual image that appears in a theme.
-	 * @author Ian Dewan
-	 *
+	 * Return all the valid theme names currently available.
+	 * @return An array of Strings containing the names of all available themes.
 	 */
-	public static enum ImageUse {
-		/** A pushable thing. */
-		BOULDER ("obj1"),
-		/** An un-pushable thing*/
-		WALL ("obj2"),
-		/** The player */
-		PLAYER ("obj3"),
-		/** An area that can be walked over */
-		EMPTY ("obj4"),
-		/** A square you must step on to win */
-		EXIT ("obj5"),
-		/** Swallows up boulders (kills player?) */
-		HOLE ("obj6");
-		/*
-		 * Add new images like this:
-		 * INTERNAL_NAME ("image_file_name")
-		 */
-		
-		private final String file;
-		
-		ImageUse (String file) {
-			this.file = file;
+	public static String[] getThemeNames() {
+		LinkedList<String> ret = new LinkedList<String>();
+		File[] imageDirContents = new File("pictures").listFiles();
+		if (imageDirContents == null) {
+			return new String[] {};
 		}
-		
-		/**
-		 * Return the filename associated with the image type.
-		 * @return The filename, minus extension
-		 */
-		String getFile() {
-			return file;
+		for (File f: imageDirContents) {
+			if (f.isDirectory()) {
+				ret.add(f.getName());
+			}
 		}
+		return (String[]) ret.toArray();
 	}
 
 }
