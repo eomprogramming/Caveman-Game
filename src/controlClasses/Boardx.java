@@ -2,9 +2,6 @@ package controlClasses;
 
 public class Boardx
 {
-	/**
-	 * test
-	 */
 	public int[][] board;
 	
 	public static final int EMPTY = 0;
