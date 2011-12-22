@@ -1,6 +1,8 @@
 package controlClasses;
 
-public class Tournament {
+import java.io.Serializable;
+
+public class Tournament implements Serializable{
 	private String name;
 	private boolean[] map;
 	public static final int NUM_MAPS = 20;
