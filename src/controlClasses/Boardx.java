@@ -1,8 +1,11 @@
 package controlClasses;
 
+import guiClasses.ImageTheme;
+
 public class Boardx
 {
 	public int[][] board;
+	protected String theme;
 	
 	public static final int EMPTY = 0;
 	public static final int CAVEMAN = 1;
@@ -110,6 +113,18 @@ public class Boardx
 	public int getSize()
 	{
 		return BOARD_SIZE;
+	}
+	
+	/**
+	 * Get the theme with which to display the board.
+	 * @return The ImageTheme object corresponding to the theme.
+	 */
+	public ImageTheme getTheme() {
+		if (theme == null) {
+			return ImageTheme.getDefaultTheme();
+		} else {
+			return ImageTheme.getThemeByName(theme);
+		}
 	}
 	
 	/**

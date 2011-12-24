@@ -1,5 +1,7 @@
 package guiClasses;
 
+import controlClasses.Boardx;
+
 /**
  * This enumerated type represents an individual image that appears in a theme.
  * @author Ian Dewan
@@ -35,5 +37,30 @@ public enum ImageUse {
 	 */
 	String getFile() {
 		return file;
+	}
+	
+	/**
+	 * Get the ImageUse for the given constant from Boardx.
+	 * @param i the constant for the desired use
+	 * @return the corresponding ImageUse
+	 * @throws IllegalArgumentException if the int is not a constant from Boardx
+	 */
+	public static ImageUse getByNum(int i) {
+		switch (i) {
+			case Boardx.BOULDER:
+				return BOULDER;
+			case Boardx.CAVEMAN:
+				return PLAYER;
+			case Boardx.EMPTY:
+				return EMPTY;
+			case Boardx.EXIT:
+				return EXIT;
+			case Boardx.HOLE:
+				return HOLE;
+			case Boardx.WALL:
+				return WALL;
+			default:
+				throw new IllegalArgumentException();
+		}
 	}
 }

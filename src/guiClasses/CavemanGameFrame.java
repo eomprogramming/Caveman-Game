@@ -8,7 +8,6 @@ import java.awt.event.KeyListener;
 import java.io.File;
 import java.io.IOException;
 
-import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
@@ -36,15 +35,6 @@ public class CavemanGameFrame extends JFrame implements KeyListener, ActionListe
 	private static final int LEFT_ARROW = 37;
 	private static final int RIGHT_ARROW = 39;
 	public static final int BLOCK_SIZE = 30;
-	
-	/*
-	 * obj0 = rock(boulder)
-	 * obj1 = tree(wall)
-	 * obj2 = caveman
-	 * obj3 = grass(empty)
-	 * obj4 = exit
-	 * obj5 = hole
-	 */
 	
 	/**
 	 * constructor
@@ -122,7 +112,7 @@ public class CavemanGameFrame extends JFrame implements KeyListener, ActionListe
 				map[i][j] = new JLabel();
 				map[i][j].setBounds(j*BLOCK_SIZE + 50, i*BLOCK_SIZE + 30, BLOCK_SIZE, BLOCK_SIZE);
 				map[i][j].setOpaque(true);
-				map[i][j].setIcon(new ImageIcon("pictures/obj3.png"));
+				map[i][j].setIcon(board.getTheme().getImage(ImageUse.EMPTY));
 				this.add(map[i][j]);
 			}
 		}
@@ -136,27 +126,27 @@ public class CavemanGameFrame extends JFrame implements KeyListener, ActionListe
 			{
 				if(board.get(i, j) == Boardx.EMPTY)
 				{
-					map[i][j].setIcon(new ImageIcon("pictures/obj3.png"));
+					map[i][j].setIcon(board.getTheme().getImage(ImageUse.EMPTY));
 				}
 				else if(board.get(i, j) == Boardx.CAVEMAN)
 				{
-					map[i][j].setIcon(new ImageIcon("pictures/obj2.png"));
+					map[i][j].setIcon(board.getTheme().getImage(ImageUse.PLAYER));
 				}
 				else if(board.get(i, j) == Boardx.BOULDER)
 				{
-					map[i][j].setIcon(new ImageIcon("pictures/obj0.png"));
+					map[i][j].setIcon(board.getTheme().getImage(ImageUse.BOULDER));
 				}
 				else if(board.get(i, j) == Boardx.WALL)
 				{
-					map[i][j].setIcon(new ImageIcon("pictures/obj1.png"));
+					map[i][j].setIcon(board.getTheme().getImage(ImageUse.WALL));
 				}
 				else if(board.get(i, j) == Boardx.EXIT)
 				{
-					map[i][j].setIcon(new ImageIcon("pictures/obj4.png"));
+					map[i][j].setIcon(board.getTheme().getImage(ImageUse.EXIT));
 				}
 				else if(board.get(i, j) == Boardx.HOLE)
 				{
-					map[i][j].setIcon(new ImageIcon("pictures/obj5.png"));
+					map[i][j].setIcon(board.getTheme().getImage(ImageUse.HOLE));
 				}
 			}
 		}
