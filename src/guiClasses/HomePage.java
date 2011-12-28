@@ -102,10 +102,10 @@ public class HomePage extends JFrame implements ActionListener
 				if (choose.showOpenDialog(this) == JFileChooser.APPROVE_OPTION) {
 					String s = choose.getSelectedFile().getPath();
 					ConfigIO.getDefaultConfigIO().setLastFile(s);
-					try{
-						new CavemanGameFrame(new PlayBoard (new MapIO(s).read().getBoard()));
+					//try{
+						new CavemanGameFrame(new PlayBoard (new MapIO(s).read()));
 						dispose();
-					}catch(NullPointerException exp){}
+					//}catch(NullPointerException exp){}
 				}
 			} catch (HeadlessException e1) {
 				// TODO Auto-generated catch block

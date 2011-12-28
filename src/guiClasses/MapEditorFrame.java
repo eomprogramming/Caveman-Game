@@ -61,6 +61,7 @@ public class MapEditorFrame extends JFrame implements ActionListener
 		
 		//makes the options for which block to use
 		options = new JRadioButton[6];
+		ImageUse[] imgUses = ImageUse.values();
 		for(int i=0; i<options.length;i++){			
 			options[i] = new JRadioButton();
 			options[i].setSize(170,30);
@@ -68,7 +69,7 @@ public class MapEditorFrame extends JFrame implements ActionListener
 			options[i].setActionCommand(""+i);
 			options[i].addActionListener(this);
 			options[i].setBackground(Color.BLACK);
-			options[i].setIcon(board.getTheme().getImage(ImageUse.getByNum(i)));
+			options[i].setIcon(board.getTheme().getImage(imgUses[i]));
 			options[i].setRolloverIcon(options[i].getIcon());
 			options[i].setSelectedIcon(options[i].getIcon());
 			add(options[i]);

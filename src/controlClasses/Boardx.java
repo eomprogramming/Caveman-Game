@@ -43,6 +43,11 @@ public class Boardx
 		this.board = board;
 	}
 	
+	public Boardx(Boardx b) {
+		this.board = b.board;
+		this.theme = b.theme;
+	}
+	
 	/**
 	 * 
 	 * @return location of caveman(use the constants in this class)

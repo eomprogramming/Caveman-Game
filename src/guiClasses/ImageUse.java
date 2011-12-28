@@ -9,17 +9,17 @@ import controlClasses.Boardx;
  */
 public enum ImageUse {
 	/** A pushable thing. */
-	BOULDER ("obj1"),
+	BOULDER ("obj0"),
 	/** An un-pushable thing*/
-	WALL ("obj2"),
+	WALL ("obj1"),
 	/** The player */
-	PLAYER ("obj3"),
+	PLAYER ("obj2"),
 	/** An area that can be walked over */
-	EMPTY ("obj4"),
+	EMPTY ("obj3"),
 	/** A square you must step on to win */
-	EXIT ("obj5"),
+	EXIT ("obj4"),
 	/** Swallows up boulders (kills player?) */
-	HOLE ("obj6");
+	HOLE ("obj5");
 	/*
 	 * Add new images like this:
 	 * INTERNAL_NAME ("image_file_name")

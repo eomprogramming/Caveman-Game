@@ -74,7 +74,10 @@ public class MapIO {
 					"Please make sure you are selecting a .map file!");
 			return null;
 		} finally {
-			read.close();
+			if (read != null)
+				read.close();
+			if (readx != null)
+				readx.close();
 		}
 	}
 	
@@ -86,8 +89,8 @@ public class MapIO {
 		String block;
 		EditBoard board = new EditBoard();
 		readx = new LineNumberReader(new FileReader(filename));
-		while ((buffer = readx.readLine().trim()) != null) {
-			block = buffer.split("\t")[0];
+		while ((buffer = readx.readLine()) != null) {
+			block = buffer.trim();
 			if (block.endsWith("{")) {
 				block = block.substring(0, block.length()-1);
 			} else {
@@ -96,11 +99,11 @@ public class MapIO {
 			if (block.equals("map")) {
 				String currLine;
 				String[] elems;
+				int[][] cells = new int[Boardx.BOARD_SIZE][Boardx.BOARD_SIZE];
 				try {
 					for (int i = 0;
 							!(currLine = readx.readLine()).trim().endsWith("}"); i++) {
 						elems = currLine.split("\t");
-						int[][] cells = new int[Boardx.BOARD_SIZE][Boardx.BOARD_SIZE];
 						for (int j = 0; j < elems.length; j++) {
 							cells[i][j] = Integer.parseInt(elems[j]);
 						}
@@ -110,8 +113,10 @@ public class MapIO {
 					// It will indicate a malformed file.
 					return null;
 				}
+				board.board = cells;
 			} else if (block.equals("theme")) {
-				board.setTheme(readx.readLine().trim());
+				String t = readx.readLine().trim();
+				board.setTheme(t.equals("null") ? null : t);
 				while (!readx.readLine().endsWith("}"))
 					continue;
 			} else { //skip unidentified block
