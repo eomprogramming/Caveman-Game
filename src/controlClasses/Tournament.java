@@ -3,6 +3,9 @@ package controlClasses;
 import java.io.Serializable;
 
 public class Tournament implements Serializable{
+	/*
+	 * Test!
+	 */
 	private String name;
 	private boolean[] map;
 	public static final int NUM_MAPS = 20;
