@@ -137,7 +137,8 @@ public class HomePage extends JFrame implements ActionListener
 				ConfigIO.getDefaultConfigIO().setLastFile(s);
 				System.out.println(s);
 				try {
-					if(s.equals(""))
+					if(s.equals("")||s.lastIndexOf(".")<0
+							||!s.substring(s.lastIndexOf("."),s.length()).equals(".map"))
 						new MapEditorFrame(new EditBoard(), null);
 					else
 					{
