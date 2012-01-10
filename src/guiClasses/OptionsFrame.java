@@ -2,13 +2,16 @@ package guiClasses;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JCheckBox;
+import javax.swing.JOptionPane;
 
 import controlClasses.Music;
 import controlClasses.RunCavemanGame;
+import controlClasses.ConfigIO;
 
 @SuppressWarnings("serial")
 public class OptionsFrame extends JFrame implements ActionListener
@@ -60,6 +63,13 @@ public class OptionsFrame extends JFrame implements ActionListener
 	{
 		Object o = e.getSource();
 		if(o == backButton) {
+			try {
+				ConfigIO.getDefaultConfigIO().write();
+			} catch (IOException e1) {
+				JOptionPane.showMessageDialog(this,
+						"An error occured writing stuff.", "Bad news",
+						JOptionPane.ERROR_MESSAGE);
+			}
 			new HomePage();
 			dispose();
 		}
