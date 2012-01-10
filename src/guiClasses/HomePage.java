@@ -102,10 +102,8 @@ public class HomePage extends JFrame implements ActionListener
 				if (choose.showOpenDialog(this) == JFileChooser.APPROVE_OPTION) {
 					String s = choose.getSelectedFile().getPath();
 					ConfigIO.getDefaultConfigIO().setLastFile(s);
-					//try{
 						new CavemanGameFrame(new PlayBoard (new MapIO(s).read()));
 						dispose();
-					//}catch(NullPointerException exp){}
 				}
 			} catch (HeadlessException e1) {
 				// TODO Auto-generated catch block
@@ -163,6 +161,14 @@ public class HomePage extends JFrame implements ActionListener
 			dispose();
 		}
 		else if(o == quit) {
+			System.out.println(System.getProperty("user.home"));
+			try {
+				ConfigIO.getDefaultConfigIO().write();
+			} catch (IOException e1) {
+				// Oh well.
+				System.exit(1);
+				System.out.println("Die");
+			}
 			System.exit(0);
 		}
 	}

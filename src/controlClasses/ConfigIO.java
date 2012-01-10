@@ -112,14 +112,13 @@ public class ConfigIO {
 	}
 	
 	/**
-	 * Write out the new config file and close all streams.
+	 * Write out the new config file.
 	 */
-	protected void finalize() throws IOException {
+	public void write() throws IOException {
 		read.close();
 		configFile.delete();
 		configFile.createNewFile();
 		Writer fw = new FileWriter(configFile);
 		fw.write(lastFile + "\n" + defaultTheme + "\n");
-		fw.close();
 	}
 }
