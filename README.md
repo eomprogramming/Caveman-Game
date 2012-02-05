@@ -5,4 +5,8 @@ A Java game.
 
 Help that caveman get back to his cave!
 
-Website: http://eomprogramming.isgreat.org/
+
+Credits
+-------
+
+* The [Earl of March Computer Club](http://eomprogramming.isgreat.org/)!
