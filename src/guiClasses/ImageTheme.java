@@ -47,9 +47,12 @@ public class ImageTheme {
 		if (themes.containsKey(name)) {
 			return themes.get(name);
 		} else {
-			ImageTheme tmp = new ImageTheme("pictures/" + name);
-			themes.put(name, tmp);
-			return tmp;
+			if(new File("pictures/"+name).isDirectory()) {
+				ImageTheme tmp = new ImageTheme("pictures/" + name);
+				themes.put(name, tmp);
+				return tmp;
+			}
+			return new ImageTheme("pictures/original");
 		}
 	}
 	
@@ -77,7 +80,9 @@ public class ImageTheme {
 				ret.add(f.getName());
 			}
 		}
-		return (String[]) ret.toArray();
+		String[] tmp = new String[ret.size()];
+		ret.toArray(tmp);
+		return tmp;
 	}
 
 }

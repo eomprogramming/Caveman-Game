@@ -201,7 +201,7 @@ public class MapEditorFrame extends JFrame implements ActionListener
 				String s = choose.getSelectedFile().getPath();
 				if(!s.equals(""))
 				{
-					ConfigIO.getDefaultConfigIO().setDefaultTheme(s);
+					ConfigIO.getDefaultConfigIO().setLastFile(s);
 					m = new MapIO(s);
 					editBoard = new EditBoard (m.read().getBoard());
 					update();
