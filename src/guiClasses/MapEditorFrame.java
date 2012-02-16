@@ -22,15 +22,6 @@ public class MapEditorFrame extends JFrame implements ActionListener
 	private int shiftX = 120, lastChosen = 3;
 	private boolean saved;
 	
-	/*
-	 * obj0 = rock(boulder)
-	 * obj1 = tree(wall)
-	 * obj2 = caveman
-	 * obj3 = grass(empty)
-	 * obj4 = exit
-	 * obj5 = hole
-	 */
-	
 	/**
 	 * constructor
 	 * @param editBoard
@@ -70,6 +61,7 @@ public class MapEditorFrame extends JFrame implements ActionListener
 		
 		//makes the options for which block to use
 		options = new JRadioButton[6];
+		ImageUse[] imgUses = ImageUse.values();
 		for(int i=0; i<options.length;i++){			
 			options[i] = new JRadioButton();
 			options[i].setSize(170,30);
@@ -77,7 +69,7 @@ public class MapEditorFrame extends JFrame implements ActionListener
 			options[i].setActionCommand(""+i);
 			options[i].addActionListener(this);
 			options[i].setBackground(Color.BLACK);
-			options[i].setIcon(new ImageIcon("pictures/obj"+i+".png"));
+			options[i].setIcon(board.getTheme().getImage(imgUses[i]));
 			options[i].setRolloverIcon(options[i].getIcon());
 			options[i].setSelectedIcon(options[i].getIcon());
 			add(options[i]);
@@ -209,7 +201,7 @@ public class MapEditorFrame extends JFrame implements ActionListener
 				String s = choose.getSelectedFile().getPath();
 				if(!s.equals(""))
 				{
-					ConfigIO.getDefaultConfigIO().setDefaultTheme(s);
+					ConfigIO.getDefaultConfigIO().setLastFile(s);
 					m = new MapIO(s);
 					editBoard = new EditBoard (m.read().getBoard());
 					update();
@@ -279,17 +271,17 @@ public class MapEditorFrame extends JFrame implements ActionListener
 			for(int j=0;j<13;j++)
 			{
 				if(editBoard.get(i, j) == Boardx.EMPTY)
-					map[i][j].setIcon(new ImageIcon("pictures/obj3.png"));
+					map[i][j].setIcon(editBoard.getTheme().getImage(ImageUse.EMPTY));
 				else if(editBoard.get(i, j) == Boardx.WALL)
-					map[i][j].setIcon(new ImageIcon("pictures/obj1.png"));
+					map[i][j].setIcon(editBoard.getTheme().getImage(ImageUse.WALL));
 				else if(editBoard.get(i, j) == Boardx.BOULDER)
-					map[i][j].setIcon(new ImageIcon("pictures/obj0.png"));
+					map[i][j].setIcon(editBoard.getTheme().getImage(ImageUse.BOULDER));
 				else if(editBoard.get(i, j) == Boardx.CAVEMAN)
-					map[i][j].setIcon(new ImageIcon("pictures/obj2.png"));
+					map[i][j].setIcon(editBoard.getTheme().getImage(ImageUse.PLAYER));
 				else if(editBoard.get(i, j) == Boardx.EXIT)
-					map[i][j].setIcon(new ImageIcon("pictures/obj4.png"));
+					map[i][j].setIcon(editBoard.getTheme().getImage(ImageUse.EXIT));
 				else if(editBoard.get(i, j) == Boardx.HOLE)
-					map[i][j].setIcon(new ImageIcon("pictures/obj5.png"));
+					map[i][j].setIcon(editBoard.getTheme().getImage(ImageUse.HOLE));
 			}
 	}
 

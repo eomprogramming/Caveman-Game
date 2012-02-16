@@ -14,7 +14,6 @@ import java.io.*;
 public class ConfigIO {
 	private static ConfigIO defaultCIO = null;
 	private File configFile;
-	private LineNumberReader read;
 	
 	private String lastFile = null;
 	private String defaultTheme = null;
@@ -30,7 +29,11 @@ public class ConfigIO {
 		configFile = f;
 		try {
 			configFile.createNewFile();
-			read = new LineNumberReader(new FileReader(f));
+			BufferedReader read;
+			read = new BufferedReader(new FileReader(f));
+			lastFile = read.readLine();
+			defaultTheme = read.readLine();
+			read.close();
 		} catch (IOException e) {
 			throw new IllegalArgumentException("Bad file passed to ConfigIO.",
 					e);
@@ -58,14 +61,6 @@ public class ConfigIO {
 	 *         error.
 	 */
 	public String getLastFile() {
-		if (lastFile == null) {
-			read.setLineNumber(0);
-			try {
-				lastFile = read.readLine();
-			} catch (IOException e) {
-				// Leave lastFile as null, to indicate error
-			}
-		}
 		if (lastFile == null) { //Still null == error in first block
 			return "";
 		}
@@ -88,14 +83,6 @@ public class ConfigIO {
 	 *         missing value or error.
 	 */
 	public String getDefaultTheme() {
-		if (defaultTheme == null) {
-			read.setLineNumber(1);
-			try {
-				defaultTheme = read.readLine();
-			} catch (IOException e) {
-				// Leave defaultTheme as null, to indicate error
-			}
-		}
 		if (defaultTheme == null) { //Still null == error in first block
 			return "";
 		}
@@ -112,10 +99,9 @@ public class ConfigIO {
 	}
 	
 	/**
-	 * Write out the new config file and close all streams.
+	 * Write out the new config file.
 	 */
-	protected void finalize() throws IOException {
-		read.close();
+	public void write() throws IOException {
 		configFile.delete();
 		configFile.createNewFile();
 		Writer fw = new FileWriter(configFile);

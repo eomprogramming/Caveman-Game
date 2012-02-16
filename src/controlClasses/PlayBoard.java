@@ -24,6 +24,10 @@ public class PlayBoard extends Boardx
 		super(board);
 	}
 	
+	public PlayBoard(Boardx b) {
+		super(b);
+	}
+	
 	/**
 	 * pushes the boulder at a certain location in a certain direction(use the constants in the Board class)
 	 * @param location

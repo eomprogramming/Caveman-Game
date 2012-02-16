@@ -2,13 +2,18 @@ package guiClasses;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JCheckBox;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 
 import controlClasses.Music;
 import controlClasses.RunCavemanGame;
+import controlClasses.ConfigIO;
 
 @SuppressWarnings("serial")
 public class OptionsFrame extends JFrame implements ActionListener
@@ -16,6 +21,7 @@ public class OptionsFrame extends JFrame implements ActionListener
 	private JButton backButton;
 	private JCheckBox music;
 	private JCheckBox gameSounds;
+	private JComboBox themeSelect;
 	
 	/**
 	 * constructor
@@ -27,7 +33,25 @@ public class OptionsFrame extends JFrame implements ActionListener
 		Theme.applyFrameTheme(this);
 		setSize(300,300);
 		
-		music = new JCheckBox("play music");
+		JLabel themeLabel = new JLabel("Theme:");
+		themeLabel.setBounds(50, 50, 100, 20);
+		add(themeLabel);
+		
+		themeSelect = new JComboBox(ImageTheme.getThemeNames());
+		themeSelect.setBounds(50, 70, 150, 20);
+		for(int i = 0; i < themeSelect.getItemCount(); i++) {
+			if(ConfigIO.getDefaultConfigIO().getDefaultTheme()
+				.equalsIgnoreCase((String)themeSelect.getItemAt(i))) {
+				themeSelect.setSelectedIndex(i);
+				break;
+			}
+			if(((String)(themeSelect.getItemAt(i))).equalsIgnoreCase("original")) {
+				themeSelect.setSelectedIndex(i);
+			}
+		}
+		add(themeSelect);
+		
+		music = new JCheckBox("Play music");
 		music.setBounds(50, 100, 150, 20);
 		music.addActionListener(this);
 		add(music);
@@ -35,7 +59,7 @@ public class OptionsFrame extends JFrame implements ActionListener
 		if(Music.playMusic)
 			music.setSelected(true);
 		
-		gameSounds = new JCheckBox("play game sounds");
+		gameSounds = new JCheckBox("Play game sounds");
 		gameSounds.setBounds(50, 130, 150, 20);
 		gameSounds.addActionListener(this);
 		add(gameSounds);
@@ -60,6 +84,14 @@ public class OptionsFrame extends JFrame implements ActionListener
 	{
 		Object o = e.getSource();
 		if(o == backButton) {
+			try {
+				ConfigIO.getDefaultConfigIO().setDefaultTheme((String)themeSelect.getSelectedItem());
+				ConfigIO.getDefaultConfigIO().write();
+			} catch (IOException e1) {
+				JOptionPane.showMessageDialog(this,
+						"An error occured writing stuff.", "Bad news",
+						JOptionPane.ERROR_MESSAGE);
+			}
 			new HomePage();
 			dispose();
 		}
@@ -88,5 +120,6 @@ public class OptionsFrame extends JFrame implements ActionListener
 				Music.playGameSounds = false;
 			}
 		}
+		
 	}
 }
