@@ -153,7 +153,6 @@ public class CavemanGameFrame extends JFrame implements KeyListener, ActionListe
 		checkWin();
 	}
 	
-	@SuppressWarnings("deprecation")
 	public void checkWin()
 	{
 		if(originalMap[board.getCavemanLoc().getRow()][board.getCavemanLoc().getCol()] == Boardx.EXIT)
@@ -161,9 +160,8 @@ public class CavemanGameFrame extends JFrame implements KeyListener, ActionListe
 			if(Music.playGameSounds)
 			{
 				if(Music.playMusic)
-					RunCavemanGame.mainSong.stop();
-				RunCavemanGame.victorySong = new Music(RunCavemanGame.victorySongFilename);
-				RunCavemanGame.victorySong.start();
+					RunCavemanGame.mainSong.stopMusic();
+				RunCavemanGame.victorySong.startMusic();
 			}
 			JOptionPane.showMessageDialog(this, "You win!!!");
 			new HomePage();

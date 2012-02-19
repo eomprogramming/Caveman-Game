@@ -127,8 +127,7 @@ public class PlayBoard extends Boardx
 				{
 					if(Music.playGameSounds)
 					{
-						RunCavemanGame.boulderPush = new Music(RunCavemanGame.pushingSound);
-						RunCavemanGame.boulderPush.start();
+						RunCavemanGame.boulderPush.startMusic();
 					}
 					board[l.getRow()][l.getCol()+1]=CAVEMAN;
 					board[l.getRow()][l.getCol()]=EMPTY;
@@ -146,8 +145,7 @@ public class PlayBoard extends Boardx
 				{
 					if(Music.playGameSounds)
 					{
-						RunCavemanGame.boulderPush = new Music(RunCavemanGame.pushingSound);
-						RunCavemanGame.boulderPush.start();
+						RunCavemanGame.boulderPush.startMusic();
 					}
 					board[l.getRow()][l.getCol()-1]=CAVEMAN;
 					board[l.getRow()][l.getCol()]=EMPTY;
@@ -165,8 +163,7 @@ public class PlayBoard extends Boardx
 				{
 					if(Music.playGameSounds)
 					{
-						RunCavemanGame.boulderPush = new Music(RunCavemanGame.pushingSound);
-						RunCavemanGame.boulderPush.start();
+						RunCavemanGame.boulderPush.startMusic();
 					}
 					board[l.getRow()+1][l.getCol()]=CAVEMAN;
 					board[l.getRow()][l.getCol()]=EMPTY;
@@ -184,8 +181,7 @@ public class PlayBoard extends Boardx
 				{
 					if(Music.playGameSounds)
 					{
-						RunCavemanGame.boulderPush = new Music(RunCavemanGame.pushingSound);
-						RunCavemanGame.boulderPush.start();
+						RunCavemanGame.boulderPush.startMusic();
 					}
 					board[l.getRow()-1][l.getCol()]=CAVEMAN;
 					board[l.getRow()][l.getCol()]=EMPTY;

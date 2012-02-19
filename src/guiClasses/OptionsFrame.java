@@ -24,7 +24,7 @@ public class OptionsFrame extends JFrame implements ActionListener
 	private JComboBox themeSelect;
 	
 	/**
-	 * constructor
+	 * Constructs a new Options menu with the user's current settings set
 	 */
 	public OptionsFrame()
 	{
@@ -79,7 +79,6 @@ public class OptionsFrame extends JFrame implements ActionListener
 	/**
 	 * determines what happens when buttons are pressed
 	 */
-	@SuppressWarnings("deprecation")
 	public void actionPerformed(ActionEvent e)
 	{
 		Object o = e.getSource();
@@ -99,14 +98,13 @@ public class OptionsFrame extends JFrame implements ActionListener
 		{
 			if(music.isSelected())
 			{
-				RunCavemanGame.mainSong = new Music(RunCavemanGame.songName);
-				RunCavemanGame.mainSong.start();
+				RunCavemanGame.mainSong.startMusic();
 				Music.playMusic = true;
 			}
 			else
 			{
 				Music.playMusic = false;
-				RunCavemanGame.mainSong.stop();
+				RunCavemanGame.mainSong.stopMusic();
 			}
 		}
 		else if(o == gameSounds)
