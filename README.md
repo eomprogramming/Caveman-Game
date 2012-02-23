@@ -3,7 +3,7 @@ Caveman Game
 
 A Java game.
 
-Help that caveman get back to his cave!
+Help that caveman get to that mysterious floating door!
 
 
 Credits
