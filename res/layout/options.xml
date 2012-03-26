@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@drawable/back_options"
+    android:clipToPadding="false"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/TextView01"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="22dp"
+        android:layout_marginTop="20dp"
+        android:text="Options"
+        android:textColor="#ffffff"
+        android:textSize="32dp" />
+
+    <CheckBox
+        android:id="@+id/vertical"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Inverse Vertical Controls" android:textSize="16dp" android:layout_marginTop="20dp" android:layout_marginLeft="20dp" android:textStyle="bold" android:textColor="#ffffff"/>
+
+    <CheckBox
+        android:id="@+id/horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Inverse Horizontal Controls" android:textSize="16dp" android:layout_marginLeft="20dp" android:textStyle="bold" android:textColor="#ffffff"/>
+
+    <TextView
+        android:id="@+id/senseText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Swipe sensitivity:" android:textColor="#ffffff" android:textSize="20dp" android:layout_marginLeft="22dp" android:layout_marginTop="20dp"/>
+
+    <SeekBar
+        android:id="@+id/sensitivity"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" android:focusable="false" android:layout_marginLeft="30dp" android:layout_marginRight="30dp" android:layout_marginTop="10dp"/>
+	
+</LinearLayout>
