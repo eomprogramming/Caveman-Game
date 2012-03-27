@@ -1,5 +1,10 @@
 package com.alyhassan.caveman.model;
 
+/**
+ * Not used, but I might add a map making feature later...
+ * @author Aly
+ *
+ */
 
 public class EditBoard extends Boardx
 {

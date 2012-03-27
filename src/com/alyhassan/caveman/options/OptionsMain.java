@@ -4,6 +4,7 @@ import com.alyhassan.caveman.R;
 import com.alyhassan.caveman.io.OptionsIO;
 
 import android.app.Activity;
+import android.content.pm.ActivityInfo;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.util.Log;
@@ -25,6 +26,8 @@ public class OptionsMain extends Activity implements OnClickListener, OnSeekBarC
 		super.onCreate(savedInstanceState);
 		requestWindowFeature(Window.FEATURE_NO_TITLE);
 		setContentView(R.layout.options);
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+		
 		
 		Typeface tf = Typeface.createFromAsset(getAssets(),"fonts/ArchitectsDaughter.ttf");
 		

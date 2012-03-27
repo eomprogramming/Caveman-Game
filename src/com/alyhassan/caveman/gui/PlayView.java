@@ -39,7 +39,8 @@ public class PlayView extends View{
     			orgBoard[i][j] = b.get(i, j);
     	
     	SwipeDetector sd = new SwipeDetector(this);
-    	this.setOnTouchListener(sd);    	
+    	this.setOnTouchListener(sd);  
+    	   	
 	}	
 	
 	private void createImages() {
@@ -66,6 +67,11 @@ public class PlayView extends View{
 		super.onDraw(canvas);
 		canvas.drawColor(Color.argb(127,101,103,0));
 		if(swipeEnabled){
+			if(getWidth()/Boardx.BOARD_COLS != GridTile.TILE_SIZE){
+	    		GridTile.TILE_SIZE = canvas.getWidth()/Boardx.BOARD_COLS;
+	    		Log.d("caveman", "Tile size changed to "+ getWidth());
+	    	}
+			
 			new GridContainer(playBoard,images).drawGrid(canvas);
 			
 			Paint paint = new Paint(); 
@@ -77,7 +83,6 @@ public class PlayView extends View{
 			Paint paint = new Paint(); 
 			paint.setColor(Color.argb(127,220,230,0)); 
 			paint.setTextSize(61);
-		//	paint.setTypeface(Typeface.createFromAsset(getAssets(),"fonts/ArchitectsDaughter.ttf"));
 			float width = paint.measureText("YOU WON!");
 			float x = (canvas.getWidth()-width)/2;
 			canvas.drawText("YOU WON!", x, GridTile.TILE_SIZE*((Boardx.BOARD_ROWS/2)-1) + 80, paint);

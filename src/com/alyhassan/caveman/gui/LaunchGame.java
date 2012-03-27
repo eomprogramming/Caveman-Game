@@ -4,6 +4,7 @@ import com.alyhassan.caveman.R;
 import com.alyhassan.caveman.io.MapIO;
 
 import android.app.Activity;
+import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
@@ -19,6 +20,7 @@ public class LaunchGame extends Activity{
 		super.onCreate(savedInstanceState);
 		requestWindowFeature(Window.FEATURE_NO_TITLE);
 		game = new PlayView(this, MapIO.readBoard(getResources().openRawResource(R.raw.maps)));
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 		setContentView(game);		
 		
 	}
