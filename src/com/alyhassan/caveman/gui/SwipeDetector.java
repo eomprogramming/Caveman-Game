@@ -15,7 +15,7 @@ public class SwipeDetector implements View.OnTouchListener {
 	
 	public SwipeDetector(PlayView v){
 	    this.view = v;
-	    minDistance = Options.sensitivity + 50;
+	    minDistance = (100-Options.sensitivity)*3 + 50;
 	}
 	
 	public void onRightToLeftSwipe(){
