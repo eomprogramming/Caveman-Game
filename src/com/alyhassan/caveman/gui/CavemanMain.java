@@ -2,8 +2,10 @@ package com.alyhassan.caveman.gui;
 
 import com.alyhassan.caveman.R;
 import com.alyhassan.caveman.io.OptionsIO;
+import com.alyhassan.caveman.options.Options;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.graphics.Typeface;
@@ -28,7 +30,7 @@ public class CavemanMain extends Activity {
 
 		OptionsIO.loadOptions();
 		
-        Typeface tf = Typeface.createFromAsset(getAssets(),"fonts/ArchitectsDaughter.ttf");
+       Typeface tf = Typeface.createFromAsset(getAssets(),"fonts/ArchitectsDaughter.ttf");
                 
         Button play = (Button) findViewById(R.id.play);
         play.setTypeface(tf);
@@ -57,40 +59,4 @@ public class CavemanMain extends Activity {
            }
         });
     }
-
-	@Override
-	protected void onDestroy() {
-		// TODO Auto-generated method stub
-		super.onDestroy();
-	}
-
-	@Override
-	protected void onPause() {
-		// TODO Auto-generated method stub
-		super.onPause();
-	}
-
-	@Override
-	protected void onRestart() {
-		// TODO Auto-generated method stub
-		super.onRestart();
-	}
-
-	@Override
-	protected void onResume() {
-		// TODO Auto-generated method stub
-		super.onResume();
-	}
-
-	@Override
-	protected void onStart() {
-		// TODO Auto-generated method stub
-		super.onStart();
-	}
-
-	@Override
-	protected void onStop() {
-		// TODO Auto-generated method stub
-		super.onStop();
-	}
 }
