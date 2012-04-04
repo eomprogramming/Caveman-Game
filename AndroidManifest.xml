@@ -19,7 +19,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".gui.LaunchGame"
+        <activity android:name=".gui.LevelScreen"
                   android:label="@string/app_name">
             <intent-filter>
                 <action android:name="com.alyhassan.caveman.PLAYGAME" />
