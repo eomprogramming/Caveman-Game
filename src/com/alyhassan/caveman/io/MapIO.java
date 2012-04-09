@@ -43,7 +43,7 @@ public class MapIO {
 	
 	public static Boardx readBoard(InputStream in, int map){
 		try {
-			in.skip(map * (Boardx.BOARD_COLS*Boardx.BOARD_ROWS + Boardx.BOARD_COLS));
+			Log.d("caveman", "skipped: "+ in.skip(map * ((Boardx.BOARD_COLS*Boardx.BOARD_ROWS) + Boardx.BOARD_ROWS)));
 		} catch (IOException e1) {}
 		
 		int[][] tiles = new int[Boardx.BOARD_ROWS][Boardx.BOARD_COLS];

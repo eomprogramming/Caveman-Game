@@ -2,6 +2,7 @@ package com.alyhassan.caveman.gui;
 
 import com.alyhassan.caveman.R;
 import com.alyhassan.caveman.io.MapIO;
+import com.alyhassan.caveman.options.Options;
 
 import android.app.Activity;
 import android.content.pm.ActivityInfo;
@@ -19,7 +20,7 @@ public class LaunchGame extends Activity{
 		// TODO Auto-generated method stub		
 		super.onCreate(savedInstanceState);
 		requestWindowFeature(Window.FEATURE_NO_TITLE);
-		game = new PlayView(this, MapIO.readBoard(getResources().openRawResource(R.raw.maps),0));
+		game = new PlayView(this, MapIO.readBoard(getResources().openRawResource(R.raw.maps),Options.currentMap));
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 		setContentView(game);		
 		
@@ -37,7 +38,7 @@ public class LaunchGame extends Activity{
 		if(item.getItemId() == 1)
 			game.refresh();
 		else if(item.getItemId() == 2)
-			game.reset(MapIO.readBoard(getResources().openRawResource(R.raw.maps),0));
+			game.reset(MapIO.readBoard(getResources().openRawResource(R.raw.maps),Options.currentMap));
 		return super.onOptionsItemSelected(item);
 	}
 

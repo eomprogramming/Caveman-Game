@@ -1,7 +1,9 @@
 package com.alyhassan.caveman.gui;
 import com.alyhassan.caveman.R;
+import com.alyhassan.caveman.options.Options;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.graphics.Bitmap;
 import android.graphics.Color;
@@ -61,9 +63,10 @@ public class LevelScreen extends Activity implements OnClickListener{
 				button[i][j] = new Button(this);
 				button[i][j].setText(count+"");
 	//			button[i][j].setBackgroundColor(Color.argb(123,171,203,97));
-				button[i][j].getBackground().setColorFilter(Color.argb(123,171,203,97), Mode.MULTIPLY);
+				button[i][j].getBackground().setColorFilter(Color.argb(123,215,242,17), Mode.MULTIPLY);
 				button[i][j].setPadding(20, 20,20, 20);
 				button[i][j].setTextSize(32);	
+				button[i][j].setId(count-1);
 				button[i][j].setOnClickListener(this);
 				row[i].addView(button[i][j],bparams);			
 				count++;
@@ -95,12 +98,13 @@ public class LevelScreen extends Activity implements OnClickListener{
 		super.onDestroy();
 	}
 
+	protected void onPause() {
+		this.finish();
+		super.onPause();
+	}
 
-
-
-	@Override
-	public void onClick(View arg0) {
-		// TODO Auto-generated method stub
-		
+	public void onClick(View v) {
+		Options.currentMap = v.getId();
+		startActivity(new Intent("com.alyhassan.caveman.LAUNCHGAME"));
 	}
 }
