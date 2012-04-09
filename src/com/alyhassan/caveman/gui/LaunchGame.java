@@ -19,7 +19,7 @@ public class LaunchGame extends Activity{
 		// TODO Auto-generated method stub		
 		super.onCreate(savedInstanceState);
 		requestWindowFeature(Window.FEATURE_NO_TITLE);
-		game = new PlayView(this, MapIO.readBoard(getResources().openRawResource(R.raw.maps)));
+		game = new PlayView(this, MapIO.readBoard(getResources().openRawResource(R.raw.maps),0));
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 		setContentView(game);		
 		
@@ -37,7 +37,7 @@ public class LaunchGame extends Activity{
 		if(item.getItemId() == 1)
 			game.refresh();
 		else if(item.getItemId() == 2)
-			game.reset(MapIO.readBoard(getResources().openRawResource(R.raw.maps)));
+			game.reset(MapIO.readBoard(getResources().openRawResource(R.raw.maps),0));
 		return super.onOptionsItemSelected(item);
 	}
 

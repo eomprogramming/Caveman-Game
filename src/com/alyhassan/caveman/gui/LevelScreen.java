@@ -5,6 +5,7 @@ import android.app.Activity;
 import android.content.pm.ActivityInfo;
 import android.graphics.Bitmap;
 import android.graphics.Color;
+import android.graphics.PorterDuff.Mode;
 import android.graphics.Typeface;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
@@ -44,20 +45,27 @@ public class LevelScreen extends Activity implements OnClickListener{
 		TableRow[] row = new TableRow[button.length];
 		int count = 1;
 		
-		Drawable dr = getResources().getDrawable(R.drawable.button);
-		Bitmap bitmap = ((BitmapDrawable) dr).getBitmap();
-			
+//		Drawable dr = getResources().getDrawable(R.drawable.button);
+//		Bitmap bitmap = ((BitmapDrawable) dr).getBitmap();
+		
+		TableLayout.LayoutParams params = new TableLayout.LayoutParams(TableLayout.LayoutParams.MATCH_PARENT,TableLayout.LayoutParams.WRAP_CONTENT);
+		
+		TableRow.LayoutParams bparams = new TableRow.LayoutParams(TableRow.LayoutParams.WRAP_CONTENT,TableRow.LayoutParams.WRAP_CONTENT);
+		bparams.setMargins(10, 10, 10, 10);
+		
+		
 		for(int i=0;i<button.length;i++){
 			row[i] = new TableRow(this);
 			row[i].setHorizontalGravity(Gravity.CENTER_HORIZONTAL);
 			for(int j=0;j<button[0].length;j++){
 				button[i][j] = new Button(this);
 				button[i][j].setText(count+"");
-				button[i][j].setBackgroundColor(Color.argb(127,220,230,0));
+	//			button[i][j].setBackgroundColor(Color.argb(123,171,203,97));
+				button[i][j].getBackground().setColorFilter(Color.argb(123,171,203,97), Mode.MULTIPLY);
 				button[i][j].setPadding(20, 20,20, 20);
-				button[i][j].setTextSize(32);				
+				button[i][j].setTextSize(32);	
 				button[i][j].setOnClickListener(this);
-				row[i].addView(button[i][j]);			
+				row[i].addView(button[i][j],bparams);			
 				count++;
 			}
 			table.addView(row[i]);
