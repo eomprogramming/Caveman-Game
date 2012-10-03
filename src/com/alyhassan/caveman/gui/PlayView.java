@@ -39,7 +39,7 @@ public class PlayView extends View{
     			orgBoard[i][j] = b.get(i, j);
     	
     	SwipeDetector sd = new SwipeDetector(this);
-    	this.setOnTouchListener(sd);  
+    	this.setOnTouchListener(sd);      	
     	   	
 	}	
 	
@@ -60,8 +60,6 @@ public class PlayView extends View{
 
     	Log.d("caveman", "Images successfully loaded");
 	}
-
-
 
 	protected void onDraw(Canvas canvas) {
 		super.onDraw(canvas);

@@ -46,13 +46,13 @@ public class CavemanMain extends Activity implements View.OnClickListener {
     
     public void onClick(View v){
     	if(v == play){
-    		startActivity(new Intent("com.alyhassan.caveman.PLAYGAME"));
+    		startActivity(new Intent("com.caveman.PLAYGAME"));
         	Log.d("caveman", "Play Game Selected");
     	}else if(v == options){
-    		startActivity(new Intent("com.alyhassan.caveman.OPTIONS"));
+    		startActivity(new Intent("com.caveman.OPTIONS"));
         	Log.d("caveman", "Options Selected");
     	}else{
-    		startActivity(new Intent("com.alyhassan.caveman.ABOUT"));
+    		startActivity(new Intent("com.caveman.ABOUT"));
         	Log.d("caveman", "About Selected");
     	}
     }

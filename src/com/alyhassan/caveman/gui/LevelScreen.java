@@ -47,13 +47,11 @@ public class LevelScreen extends Activity implements OnClickListener{
 		TableRow[] row = new TableRow[button.length];
 		int count = 1;
 		
-//		Drawable dr = getResources().getDrawable(R.drawable.button);
-//		Bitmap bitmap = ((BitmapDrawable) dr).getBitmap();
-		
-		TableLayout.LayoutParams params = new TableLayout.LayoutParams(TableLayout.LayoutParams.MATCH_PARENT,TableLayout.LayoutParams.WRAP_CONTENT);
+		Drawable dr = getResources().getDrawable(R.drawable.button_level);
+		Bitmap bitmap = ((BitmapDrawable) dr).getBitmap();
 		
 		TableRow.LayoutParams bparams = new TableRow.LayoutParams(TableRow.LayoutParams.WRAP_CONTENT,TableRow.LayoutParams.WRAP_CONTENT);
-		bparams.setMargins(10, 10, 10, 10);
+		bparams.setMargins(5, 5, 5, 5);
 		
 		
 		for(int i=0;i<button.length;i++){
@@ -62,8 +60,8 @@ public class LevelScreen extends Activity implements OnClickListener{
 			for(int j=0;j<button[0].length;j++){
 				button[i][j] = new Button(this);
 				button[i][j].setText(count+"");
-	//			button[i][j].setBackgroundColor(Color.argb(123,171,203,97));
-				button[i][j].getBackground().setColorFilter(Color.argb(123,215,242,17), Mode.MULTIPLY);
+	//			button[i][j].getBackground().setColorFilter(Color.argb(255,215,242,17), Mode.MULTIPLY);
+				button[i][j].setBackgroundDrawable(dr);
 				button[i][j].setPadding(20, 20,20, 20);
 				button[i][j].setTextSize(32);	
 				button[i][j].setId(count-1);
@@ -83,16 +81,12 @@ public class LevelScreen extends Activity implements OnClickListener{
 		
 		table.setPadding(10, 30, 10, 20);
 		layout.addView(table);
-		layout.setBackgroundResource(R.drawable.back_main);
+		layout.setBackgroundResource(R.drawable.back_common);
 		
 		setContentView(layout);
 		
 	}
-
 	
-	
-	
-	@Override
 	protected void onDestroy() {
 		this.finish();
 		super.onDestroy();
