@@ -1,7 +1,7 @@
 The Caveman Game
 ----------------
 
-If you wish to design a map for this version, download the [Design.jar](https://github.com/downloads/eomprogramming/caveman-game-android/Level%20Design.jar) and email the generated code to someone.
+If you wish to design a map for this version, download the [Design.jar](https://github.com/downloads/eomprogramming/Caveman-Game/Design.jar) and email the generated code to someone.
 
 Notes to programmers:
 
