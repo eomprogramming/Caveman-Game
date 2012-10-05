@@ -1,8 +1,8 @@
-package com.alyhassan.caveman.gui;
+package com.caveman.gui;
 
-import com.alyhassan.caveman.R;
-import com.alyhassan.caveman.io.OptionsIO;
-import com.alyhassan.caveman.options.Options;
+import com.caveman.R;
+import com.caveman.io.OptionsIO;
+import com.caveman.options.Options;
 
 import android.app.Activity;
 import android.content.Context;

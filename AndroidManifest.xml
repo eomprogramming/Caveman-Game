@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.alyhassan.caveman"
+    package="com.caveman"
     android:versionCode="1"
     android:versionName="1.0" >
 
@@ -22,28 +22,28 @@
         <activity android:name=".gui.LevelScreen"
                   android:label="@string/app_name">
             <intent-filter>
-                <action android:name="com.alyhassan.caveman.PLAYGAME" />
+                <action android:name="com.caveman.PLAYGAME" />
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
         <activity android:name=".options.OptionsMain"
                   android:label="@string/app_name">
             <intent-filter>
-                <action android:name="com.alyhassan.caveman.OPTIONS" />
+                <action android:name="com.caveman.OPTIONS" />
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
          <activity android:name=".gui.AboutPage"
                   android:label="@string/app_name">
             <intent-filter>
-                <action android:name="com.alyhassan.caveman.ABOUT" />
+                <action android:name="com.caveman.ABOUT" />
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
          <activity android:name=".gui.LaunchGame"
                   android:label="@string/app_name">
             <intent-filter>
-                <action android:name="com.alyhassan.caveman.LAUNCHGAME" />
+                <action android:name="com.caveman.LAUNCHGAME" />
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
