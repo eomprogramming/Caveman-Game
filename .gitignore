@@ -21,3 +21,6 @@ local.properties
 
 *.hao
 *.map
+
+.settings/
+*.log
