@@ -99,7 +99,7 @@ public class MapIO {
 			if (block.equals("map")) {
 				String currLine;
 				String[] elems;
-				int[][] cells = new int[Boardx.BOARD_SIZE][Boardx.BOARD_SIZE];
+				int[][] cells = new int[board.BOARD_HEIGHT][board.BOARD_WIDTH];
 				try {
 					for (int i = 0;
 							!(currLine = readx.readLine()).trim().endsWith("}"); i++) {

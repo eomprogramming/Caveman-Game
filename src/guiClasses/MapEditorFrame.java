@@ -19,7 +19,7 @@ public class MapEditorFrame extends JFrame implements ActionListener
 	private JButton map[][];
 	private JRadioButton options[];
 	private MapIO m;
-	private int shiftX = 120, lastChosen = 3;
+	private int shiftX, shiftY = 25, lastChosen = 3;
 	private boolean saved;
 	
 	/**
@@ -29,8 +29,11 @@ public class MapEditorFrame extends JFrame implements ActionListener
 	public MapEditorFrame(EditBoard board, MapIO io)
 	{
 		super("Caveman Game");
+		
+		shiftX = CavemanGameFrame.BLOCK_SIZE * board.getNumCols()-275;
+		
 		editBoard = board;
-		setSize(680,500);
+		setSize(CavemanGameFrame.BLOCK_SIZE * board.getNumCols() + 280,CavemanGameFrame.BLOCK_SIZE * board.getNumRows() + 120);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		setVisible(true);
 		setLayout(null);
@@ -41,10 +44,10 @@ public class MapEditorFrame extends JFrame implements ActionListener
 		m = io;
 		
 		//makes the board buttons
-		map = new JButton[13][13];
-		for(int i=0; i<13;i++){
+		map = new JButton[board.BOARD_HEIGHT][board.BOARD_WIDTH];
+		for(int i=0; i<board.BOARD_HEIGHT;i++){
 			
-			for(int j=0;j<13;j++)
+			for(int j=0;j<board.BOARD_WIDTH;j++)
 			{
 				map[i][j] = new JButton();
 				map[i][j].setSize(30,30);
@@ -65,7 +68,7 @@ public class MapEditorFrame extends JFrame implements ActionListener
 		for(int i=0; i<options.length;i++){			
 			options[i] = new JRadioButton();
 			options[i].setSize(170,30);
-			options[i].setLocation(450,i*30+40);
+			options[i].setLocation(325+shiftX,i*30+40);
 			options[i].setActionCommand(""+i);
 			options[i].addActionListener(this);
 			options[i].setBackground(Color.BLACK);
@@ -88,28 +91,28 @@ public class MapEditorFrame extends JFrame implements ActionListener
 		options[3].setSelected(true);
 
 		quitButton = new JButton();
-		quitButton.setBounds(420 + shiftX, 380, 80, 40);
+		quitButton.setBounds(420 + shiftX, 380+shiftY, 80, 40);
 		quitButton.setText("QUIT");
 		quitButton.addActionListener(this);
 		add(quitButton);
 
 		saveButton = new JButton();
-		saveButton.setBounds(320 + shiftX, 230, 80, 40);
+		saveButton.setBounds(320 + shiftX, 230+shiftY, 80, 40);
 		saveButton.setText("SAVE");
 		saveButton.addActionListener(this);
 		add(saveButton);
 		saveAsButton = new JButton();
-		saveAsButton.setBounds(410 + shiftX, 230, 100, 40);
+		saveAsButton.setBounds(410 + shiftX, 230+shiftY, 100, 40);
 		saveAsButton.setText("SAVE AS");
 		saveAsButton.addActionListener(this);
 		add(saveAsButton);
 		openFileButton = new JButton();
-		openFileButton.setBounds(410 + shiftX, 280, 100, 40);
+		openFileButton.setBounds(410 + shiftX, 280+shiftY, 100, 40);
 		openFileButton.setText("OPEN FILE");
 		openFileButton.addActionListener(this);
 		add(openFileButton);
 		newMapButton = new JButton();
-		newMapButton.setBounds(320 + shiftX, 280, 80, 40);
+		newMapButton.setBounds(320 + shiftX, 280+shiftY, 80, 40);
 		newMapButton.setText("RESET");
 		newMapButton.addActionListener(this);
 		add(newMapButton);
@@ -267,8 +270,8 @@ public class MapEditorFrame extends JFrame implements ActionListener
 	}
 	
 	private void update() {
-		for(int i=0;i<13;i++)
-			for(int j=0;j<13;j++)
+		for(int i=0;i<editBoard.BOARD_HEIGHT;i++)
+			for(int j=0;j<editBoard.BOARD_WIDTH;j++)
 			{
 				if(editBoard.get(i, j) == Boardx.EMPTY)
 					map[i][j].setIcon(editBoard.getTheme().getImage(ImageUse.EMPTY));

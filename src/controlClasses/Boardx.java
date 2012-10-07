@@ -19,19 +19,22 @@ public class Boardx
 	public static final int UP = 3;
 	public static final int DOWN = 4;
 	
-	public static final int BOARD_SIZE = 13;
+	public int BOARD_HEIGHT;
+	public int BOARD_WIDTH;
 
 	/**
 	 * constructs a Board object 
 	 */
 	public Boardx()
 	{
-		board = new int[BOARD_SIZE][BOARD_SIZE];
-		for(int i = 0; i < BOARD_SIZE; i++)
-			for(int j = 0; j < BOARD_SIZE; j++)
+		BOARD_HEIGHT = 15;
+		BOARD_WIDTH = 10;
+		board = new int[BOARD_HEIGHT][BOARD_WIDTH];
+		for(int i = 0; i < BOARD_HEIGHT; i++)
+			for(int j = 0; j < BOARD_WIDTH; j++)
 				board[i][j] = EMPTY;
-		board[0][0] = 1;
-		board[12][12] = 4;
+		board[0][0] = CAVEMAN;
+		board[BOARD_HEIGHT-1][BOARD_WIDTH-1] = EXIT;
 	}
 	
 	/**
@@ -40,10 +43,14 @@ public class Boardx
 	 */
 	public Boardx(int[][] board)
 	{
+		BOARD_HEIGHT = board.length;
+		BOARD_WIDTH = board[0].length;
 		this.board = board;
 	}
 	
 	public Boardx(Boardx b) {
+		this.BOARD_HEIGHT = b.BOARD_HEIGHT;
+		this.BOARD_WIDTH = b.BOARD_WIDTH;
 		this.board = b.board;
 		this.theme = b.theme;
 	}
@@ -55,9 +62,9 @@ public class Boardx
 	public Loc getCavemanLoc()
 	{
 		int row=0, col=0;
-		for(int i = 0;i<BOARD_SIZE;i++)
+		for(int i = 0;i<BOARD_HEIGHT;i++)
 		{
-			for(int j = 0;j<BOARD_SIZE;j++)
+			for(int j = 0;j<BOARD_WIDTH;j++)
 			{
 				if(this.get(i,j)==CAVEMAN)
 				{
@@ -113,11 +120,20 @@ public class Boardx
 	
 	/**
 	 * 
-	 * @return number of rows/columns on the board
+	 * @return number of rows on the board
 	 */
-	public int getSize()
+	public int getNumRows()
 	{
-		return BOARD_SIZE;
+		return BOARD_HEIGHT;
+	}
+	
+	/**
+	 * 
+	 * @return number of columns on the board
+	 */
+	public int getNumCols()
+	{
+		return BOARD_WIDTH;
 	}
 	
 	/**
@@ -143,9 +159,9 @@ public class Boardx
 	public boolean isValidBoard()
 	{
 		byte caveman=0, exit=0, error=0;
-		for(int i = 0;i<BOARD_SIZE;i++)
+		for(int i = 0;i<BOARD_HEIGHT;i++)
 		{
-			for(int j = 0;j<BOARD_SIZE;j++)
+			for(int j = 0;j<BOARD_WIDTH;j++)
 			{
 				if(this.get(i,j)==CAVEMAN)
 					caveman++;
@@ -192,9 +208,9 @@ public class Boardx
 	 */
 	public void print()
 	{
-		for(int i = 0;i<BOARD_SIZE;i++)
+		for(int i = 0;i<BOARD_HEIGHT;i++)
 		{
-			for(int j = 0;j<BOARD_SIZE;j++)
+			for(int j = 0;j<BOARD_WIDTH;j++)
 			{
 				System.out.print(this.get(i, j));
 			}

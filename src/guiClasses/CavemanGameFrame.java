@@ -52,16 +52,16 @@ public class CavemanGameFrame extends JFrame implements KeyListener, ActionListe
 		else
 			board = new PlayBoard();
 		
-		originalMap = new int[board.getSize()][board.getSize()];
-		for(int i = 0; i < 13; i++)
+		originalMap = new int[board.getNumRows()][board.getNumCols()];
+		for(int i = 0; i < board.BOARD_HEIGHT; i++)
 		{
-			for(int j = 0; j < 13; j++)
+			for(int j = 0; j < board.BOARD_WIDTH; j++)
 			{
 				originalMap[i][j] = board.get(i, j);
 			}
 		}
 		
-		map = new JLabel[board.getSize()][board.getSize()];
+		map = new JLabel[board.getNumRows()][board.getNumCols()];
 		
 		System.out.println(map.length);
 		System.out.println(map[0].length);
@@ -72,7 +72,7 @@ public class CavemanGameFrame extends JFrame implements KeyListener, ActionListe
 		update();
 
 		addKeyListener(this);
-		setSize(BLOCK_SIZE * board.getSize() + 112, BLOCK_SIZE * board.getSize() + 150);
+		setSize(BLOCK_SIZE * board.getNumCols() + 112, BLOCK_SIZE * board.getNumRows() + 150);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		setVisible(true);
 	}
@@ -97,7 +97,7 @@ public class CavemanGameFrame extends JFrame implements KeyListener, ActionListe
 	{
 		quitButton = new JButton("Quit");
 		quitButton.addActionListener(this);
-		quitButton.setBounds(BLOCK_SIZE * board.getSize()/2, BLOCK_SIZE * board.getSize()-10 + 60, 100, 30);
+		quitButton.setBounds(BLOCK_SIZE * board.getNumCols()/2, BLOCK_SIZE * board.getNumRows()-10 + 60, 100, 30);
 	//	System.out.println(quitButton.getBounds().toString());
 		quitButton.setFocusable(false);
 		add(quitButton);
@@ -105,9 +105,9 @@ public class CavemanGameFrame extends JFrame implements KeyListener, ActionListe
 	
 	public void createLabels()
 	{
-		for(int i = 0; i < board.getSize(); i++)
+		for(int i = 0; i < board.getNumRows(); i++)
 		{
-			for(int j = 0; j < board.getSize(); j++)
+			for(int j = 0; j < board.getNumCols(); j++)
 			{
 				map[i][j] = new JLabel();
 				map[i][j].setBounds(j*BLOCK_SIZE + 50, i*BLOCK_SIZE + 30, BLOCK_SIZE, BLOCK_SIZE);
@@ -120,9 +120,9 @@ public class CavemanGameFrame extends JFrame implements KeyListener, ActionListe
 	
 	public void update()
 	{
-		for(int i = 0; i < board.getSize(); i++)
+		for(int i = 0; i < board.getNumRows(); i++)
 		{
-			for(int j = 0; j < board.getSize(); j++)
+			for(int j = 0; j < board.getNumCols(); j++)
 			{
 				if(board.get(i, j) == Boardx.EMPTY)
 				{
@@ -169,7 +169,6 @@ public class CavemanGameFrame extends JFrame implements KeyListener, ActionListe
 		}
 	}
 	
-	@Override
 	public void keyPressed(KeyEvent arg0) 
 	{
 		
@@ -199,13 +198,11 @@ public class CavemanGameFrame extends JFrame implements KeyListener, ActionListe
 		}
 	}
 
-	@Override
 	public void keyTyped(KeyEvent arg0) 
 	{
 		
 	}
 
-	@Override
 	public void actionPerformed(ActionEvent e) 
 	{
 		if(e.getSource() == quitButton)
