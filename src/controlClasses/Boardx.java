@@ -1,17 +1,11 @@
 package controlClasses;
 
-<<<<<<< HEAD
-public class Boardx
-{
-	public int[][] board;
-=======
 import guiClasses.ImageTheme;
 
 public class Boardx
 {
 	public int[][] board;
 	protected String theme;
->>>>>>> origin/master
 	
 	public static final int EMPTY = 0;
 	public static final int CAVEMAN = 1;
@@ -49,14 +43,11 @@ public class Boardx
 		this.board = board;
 	}
 	
-<<<<<<< HEAD
-=======
 	public Boardx(Boardx b) {
 		this.board = b.board;
 		this.theme = b.theme;
 	}
 	
->>>>>>> origin/master
 	/**
 	 * 
 	 * @return location of caveman(use the constants in this class)

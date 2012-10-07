@@ -12,11 +12,7 @@ import javax.swing.JOptionPane;
 public class MapIO {
 	private String filename;
 	private ObjectInputStream read;
-<<<<<<< HEAD
-	private ObjectOutputStream write;
-=======
 	private LineNumberReader readx;
->>>>>>> origin/master
 	
 	/**
 	 * Hi, I'm MapIO's constructor, and I'd love to get to know you better.
@@ -56,26 +52,7 @@ public class MapIO {
 	 * filesystem to the program.
 	 */
 	public Boardx read() throws IOException {
-		try {
-<<<<<<< HEAD
-			read = new ObjectInputStream(new FileInputStream(filename));
-			Object o = read.readObject();
-			if(o instanceof Board)
-			{
-				return new Boardx(((Board) o).getBoard());
-			}
-			Boardx b = new Boardx((int[][]) o);
-			read.close();
-			return b;
-		} catch (ClassNotFoundException e) {
-			// this never happens
-			return null;
-		}catch(FileNotFoundException exp){
-			JOptionPane.showMessageDialog(null,"Please make sure you are selecting a .map file!");
-			return null;
-		}
-=======
-			
+		try {			
 			read = new ObjectInputStream(new FileInputStream(filename));
 			Object o = read.readObject();
 			if(o instanceof Board) // original format
@@ -153,23 +130,11 @@ public class MapIO {
 			}
 		}
 		return board;
->>>>>>> origin/master
 	}
 	
 	/**
 	 * It writes stuff.
 	 * @param b the board
-<<<<<<< HEAD
-	 * @return 
-	 * @throws IOException if the data is attacked by highwaymen on the way to the
-	 * filesystem.
-	 */
-	public void write(Boardx b) throws IOException {
-		write = new ObjectOutputStream(new FileOutputStream(filename));
-		write.writeObject(b.getBoard());
-		write.flush();
-		write.close();
-=======
 	 * @throws IOException if the data are attacked by highwaymen on the way to the
 	 * filesystem.
 	 */
@@ -193,7 +158,6 @@ public class MapIO {
 		w.println("}");
 		
 		w.close();
->>>>>>> origin/master
 	}
 
 }
