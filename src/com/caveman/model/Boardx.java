@@ -193,4 +193,23 @@ public class Boardx
 			return true;
 		return false;
 	}
+
+	/**
+	 * Checks if the value is a legal tile
+	 * @param n - The value to check
+	 * @return THe same value, or that of an empty tile
+	 */
+	public static int makeLegal(int n) {
+		switch(n){
+			case EMPTY:
+			case CAVEMAN:
+			case BOULDER:
+			case WALL:
+			case EXIT:
+			case HOLE:
+				return n;
+			default:
+				return EMPTY;			
+		}
+	}
 } // end class

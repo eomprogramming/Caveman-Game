@@ -9,7 +9,7 @@ public class GridTile {
 	
 	private int x,y;
 	private Bitmap image;
-	public static int TILE_SIZE = 480/Boardx.BOARD_COLS;
+	public static int TILE_SIZE = CavemanMain.SCREEN_WIDTH/Boardx.BOARD_COLS;
 	
 	public GridTile(int xPos, int yPos, Bitmap image){
 		setCoords(xPos, yPos);

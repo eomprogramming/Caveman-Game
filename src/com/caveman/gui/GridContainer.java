@@ -37,12 +37,16 @@ public class GridContainer {
 	}
 	
 	public void drawGrid(Canvas canvas){
-		Log.d("caveman",rows+", "+cols);
 		for(int i=0;i<rows;i++){
 			for(int j=0;j<cols;j++){			
 				tiles[i][j].drawTile(canvas);
 		    }
 		}
+	}
+	
+	public void update(Boardx b){
+		this.board = b;
+		createTiles();
 	}
 
 }

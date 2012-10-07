@@ -10,6 +10,7 @@ import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
+import android.graphics.Typeface;
 import android.util.Log;
 import android.view.View;
 
@@ -18,6 +19,7 @@ public class PlayView extends View{
 	private boolean swipeEnabled;
 	public static final short UP=1, DOWN=2, LEFT=3,RIGHT=4;
 	private int[][] orgBoard;
+	private GridContainer grid;
 	private PlayBoard playBoard;
 	private Bitmap[] images;
 
@@ -27,14 +29,8 @@ public class PlayView extends View{
     	swipeEnabled = true;
     	
     	createImages();
-    	/**
-    	 * TEMP TEMP
-    	 */
-    	b =  new Boardx();
-    	/**
-    	 * Okay back to normal
-    	 */
     	playBoard = new PlayBoard(b.getBoard());
+    	grid = new GridContainer(b, images);
     	
     	orgBoard = new int[Boardx.BOARD_ROWS][Boardx.BOARD_COLS];
     	
@@ -64,27 +60,29 @@ public class PlayView extends View{
     	Log.d("caveman", "Images successfully loaded");
 	}
 
+	private Paint paint = new Paint();
+	
 	protected void onDraw(Canvas canvas) {
 		super.onDraw(canvas);
-		canvas.drawColor(Color.argb(127,101,103,0));
-		if(swipeEnabled){
-			if(getWidth()/Boardx.BOARD_COLS != GridTile.TILE_SIZE){
-	    		GridTile.TILE_SIZE = canvas.getWidth()/Boardx.BOARD_COLS;
-	    		Log.d("caveman", "Tile size changed to "+ getWidth());
-	    	}
-			new GridContainer(playBoard,images).drawGrid(canvas);
-			
-			Paint paint = new Paint(); 
-			paint.setColor(Color.argb(127,220,230,0)); 
-			paint.setTextSize(20);
-			
-			checkForWin(canvas,paint);
-		}else{
-			Paint paint = new Paint(); 
-			paint.setColor(Color.argb(127,220,230,0)); 
+		canvas.drawColor(Color.rgb(74,77,2));
+		if(getWidth()/Boardx.BOARD_COLS != GridTile.TILE_SIZE){
+    		GridTile.TILE_SIZE = canvas.getWidth()/Boardx.BOARD_COLS;
+    		Log.d("caveman", "Tile size changed to "+ getWidth());
+    	}
+		grid.update(playBoard);
+		grid.drawGrid(canvas);
+		
+		paint.setColor(Color.rgb(202,202,0)); 
+		paint.setTextSize(20);
+		
+		checkForWin(canvas,paint);
+		
+		if(!swipeEnabled){
+			paint.setColor(Color.rgb(65,65,0)); 
 			paint.setTextSize(61);
-			float width = paint.measureText("YOU WON!");
-			float x = (canvas.getWidth()-width)/2;
+			paint.setTypeface(Typeface.create(Typeface.SANS_SERIF, Typeface.BOLD));
+			
+			float x = (canvas.getWidth()-paint.measureText("YOU WON!"))/2;
 			canvas.drawText("YOU WON!", x, GridTile.TILE_SIZE*((Boardx.BOARD_ROWS/2)-1) + 80, paint);
 		}
 	}
@@ -132,13 +130,13 @@ public class PlayView extends View{
 	}
 	
 	public void reset(Boardx b){
-	/*	playBoard = new PlayBoard(b.getBoard());    	    	
+		playBoard = new PlayBoard(b.getBoard());    	    	
     	for(int i = 0; i < Boardx.BOARD_ROWS; i++)
     		for(int j = 0; j < Boardx.BOARD_COLS; j++)
     			orgBoard[i][j] = b.get(i, j);
     	
     	invalidate();
-		swipeEnabled = true;*/
+		swipeEnabled = true;
 	}
 	
 }

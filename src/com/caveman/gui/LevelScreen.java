@@ -60,7 +60,6 @@ public class LevelScreen extends Activity implements OnClickListener{
 			for(int j=0;j<button[0].length;j++){
 				button[i][j] = new Button(this);
 				button[i][j].setText(count+"");
-	//			button[i][j].getBackground().setColorFilter(Color.argb(255,215,242,17), Mode.MULTIPLY);
 				button[i][j].setBackgroundDrawable(dr);
 				button[i][j].setPadding(20, 20,20, 20);
 				button[i][j].setTextSize(32);	

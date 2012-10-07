@@ -35,7 +35,7 @@ public class MapIO {
 		    for(int i=0;i<Boardx.BOARD_ROWS;i++){
 		    	line = br.readLine();
 		    	for(int j=0;j<Boardx.BOARD_COLS;j++)		    		
-		    		tiles[i][j] = Integer.parseInt(line.substring(j,j+1));
+		    		tiles[i][j] = Boardx.makeLegal(Integer.parseInt(line.substring(j,j+1)));
 		    }
 		    
 		   return new Boardx(tiles);
@@ -53,8 +53,11 @@ public class MapIO {
 			for(int i=0;i<Boardx.BOARD_ROWS;i++){	    	
 		    	for(int j=0;j<Boardx.BOARD_COLS;j++){
 		    		int num = (in.read()) - 48;
+		    		if((num + 48) == '_'){
+		    			Log.e("caveman", "Maps don't match size! Weird things may occur!");
+		    		}
 					if(num >= 0)
-		    			tiles[i][j] = num;
+		    			tiles[i][j] = Boardx.makeLegal(num);
 		    	}
 		    	in.read();
 		    }

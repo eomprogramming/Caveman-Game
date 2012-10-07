@@ -8,9 +8,12 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
+import android.graphics.Point;
 import android.graphics.Typeface;
 import android.os.Bundle;
+import android.util.DisplayMetrics;
 import android.util.Log;
+import android.view.Display;
 import android.view.View;
 import android.view.Window;
 import android.widget.Button;
@@ -19,6 +22,7 @@ import android.widget.ScrollView;
 public class CavemanMain extends Activity implements View.OnClickListener {
 	
 	private Button play, options, about;
+	public static int SCREEN_WIDTH;
 	
     /** Called when the activity is first created. */
     @Override
@@ -30,7 +34,11 @@ public class CavemanMain extends Activity implements View.OnClickListener {
 		OptionsIO.loadOptions();
 		
         Typeface tf = Typeface.createFromAsset(getAssets(),"fonts/ArchitectsDaughter.ttf");
-                
+       
+        DisplayMetrics displaymetrics = new DisplayMetrics();
+        getWindowManager().getDefaultDisplay().getMetrics(displaymetrics);
+        SCREEN_WIDTH = displaymetrics.widthPixels;
+        
         play = (Button) findViewById(R.id.play);
         play.setTypeface(tf);
 	    play.setOnClickListener(this);
