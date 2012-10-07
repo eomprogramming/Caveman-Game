@@ -19,4 +19,5 @@ local.properties
 .classpath
 .project
 
-tournament.hao
+*.hao
+*.map
