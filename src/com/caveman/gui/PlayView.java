@@ -10,8 +10,6 @@ import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
-import android.graphics.Rect;
-import android.graphics.Typeface;
 import android.util.Log;
 import android.view.View;
 
@@ -29,7 +27,13 @@ public class PlayView extends View{
     	swipeEnabled = true;
     	
     	createImages();
-    	
+    	/**
+    	 * TEMP TEMP
+    	 */
+    	b =  new Boardx();
+    	/**
+    	 * Okay back to normal
+    	 */
     	playBoard = new PlayBoard(b.getBoard());
     	
     	orgBoard = new int[Boardx.BOARD_ROWS][Boardx.BOARD_COLS];
@@ -40,7 +44,6 @@ public class PlayView extends View{
     	
     	SwipeDetector sd = new SwipeDetector(this);
     	this.setOnTouchListener(sd);      	
-    	   	
 	}	
 	
 	private void createImages() {
@@ -69,7 +72,6 @@ public class PlayView extends View{
 	    		GridTile.TILE_SIZE = canvas.getWidth()/Boardx.BOARD_COLS;
 	    		Log.d("caveman", "Tile size changed to "+ getWidth());
 	    	}
-			
 			new GridContainer(playBoard,images).drawGrid(canvas);
 			
 			Paint paint = new Paint(); 
@@ -126,17 +128,17 @@ public class PlayView extends View{
 	}
 	
 	public void refresh(){
-		this.invalidate();
+		//this.invalidate();
 	}
 	
 	public void reset(Boardx b){
-		playBoard = new PlayBoard(b.getBoard());    	    	
+	/*	playBoard = new PlayBoard(b.getBoard());    	    	
     	for(int i = 0; i < Boardx.BOARD_ROWS; i++)
     		for(int j = 0; j < Boardx.BOARD_COLS; j++)
     			orgBoard[i][j] = b.get(i, j);
     	
     	invalidate();
-		swipeEnabled = true;
+		swipeEnabled = true;*/
 	}
 	
 }

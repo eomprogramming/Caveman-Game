@@ -4,6 +4,7 @@ import com.caveman.model.Boardx;
 
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
+import android.util.Log;
 
 public class GridContainer {
 	
@@ -18,12 +19,11 @@ public class GridContainer {
 		this.board = board;
 		imgs = img;
 		tiles = new GridTile[rows][cols];
-		createTiles();
-		
+		createTiles();		
 	}
 	
 	private void createTiles(){
-		int y = 5;
+		int y = 0;
 		for(int i=0;i<rows;i++){
 			for(int j=0;j<cols;j++){			
 				tiles[i][j] = new GridTile(j*GridTile.TILE_SIZE,y,imgs[board.get(i,j)]);
@@ -37,6 +37,7 @@ public class GridContainer {
 	}
 	
 	public void drawGrid(Canvas canvas){
+		Log.d("caveman",rows+", "+cols);
 		for(int i=0;i<rows;i++){
 			for(int j=0;j<cols;j++){			
 				tiles[i][j].drawTile(canvas);

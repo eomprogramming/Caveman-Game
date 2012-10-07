@@ -1,5 +1,7 @@
 package com.caveman.gui;
 
+import com.caveman.model.Boardx;
+
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
 
@@ -7,7 +9,7 @@ public class GridTile {
 	
 	private int x,y;
 	private Bitmap image;
-	public static int TILE_SIZE = 60;
+	public static int TILE_SIZE = 480/Boardx.BOARD_COLS;
 	
 	public GridTile(int xPos, int yPos, Bitmap image){
 		setCoords(xPos, yPos);

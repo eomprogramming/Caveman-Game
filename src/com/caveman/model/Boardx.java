@@ -17,7 +17,7 @@ public class Boardx
 	public static final int UP = 3;
 	public static final int DOWN = 4;
 	
-	public static final int BOARD_ROWS = 12, BOARD_COLS = 8;
+	public static final int BOARD_ROWS = 15, BOARD_COLS = 10;
 
 	/**
 	 * constructs a Board object 
