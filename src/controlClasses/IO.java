@@ -2,7 +2,6 @@ package controlClasses;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
-<<<<<<< HEAD
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -11,12 +10,6 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
-=======
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.FileWriter;
-import java.io.IOException;
->>>>>>> origin/master
 import java.io.PrintWriter;
 
 /**
@@ -154,7 +147,6 @@ public class IO
 		fileIn.close();
 	}
 	
-<<<<<<< HEAD
 	private static ObjectInputStream input;
     private static ObjectOutputStream output;
     
@@ -185,6 +177,4 @@ public class IO
     	output.close();
     }
 	
-=======
->>>>>>> origin/master
 } // end class

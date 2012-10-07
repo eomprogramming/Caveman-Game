@@ -6,15 +6,10 @@ import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.io.File;
-<<<<<<< HEAD
 import java.io.FileNotFoundException;
 import java.io.IOException;
 
 import javax.swing.ImageIcon;
-=======
-import java.io.IOException;
-
->>>>>>> origin/master
 import javax.swing.JButton;
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
@@ -43,7 +38,6 @@ public class CavemanGameFrame extends JFrame implements KeyListener, ActionListe
 	private static final int RIGHT_ARROW = 39;
 	public static final int BLOCK_SIZE = 30;
 	
-<<<<<<< HEAD
 	private int a;
 	/*
 	 * obj0 = rock(boulder)
@@ -54,26 +48,17 @@ public class CavemanGameFrame extends JFrame implements KeyListener, ActionListe
 	 * obj5 = hole
 	 */
 	
-=======
->>>>>>> origin/master
 	/**
 	 * constructor
 	 * @param gameBoard
 	 */
-<<<<<<< HEAD
 	public CavemanGameFrame(PlayBoard playBoard, int a)
-=======
-	public CavemanGameFrame(PlayBoard playBoard)
->>>>>>> origin/master
 	{
 		super("Caveman Game");
 		setLayout(null);
 
-<<<<<<< HEAD
 		this.a = a;
 		
-=======
->>>>>>> origin/master
 		Theme.applyFrameTheme(this);
 		
 		if(playBoard.isValidBoard())
@@ -141,11 +126,7 @@ public class CavemanGameFrame extends JFrame implements KeyListener, ActionListe
 				map[i][j] = new JLabel();
 				map[i][j].setBounds(j*BLOCK_SIZE + 50, i*BLOCK_SIZE + 30, BLOCK_SIZE, BLOCK_SIZE);
 				map[i][j].setOpaque(true);
-<<<<<<< HEAD
 				map[i][j].setIcon(new ImageIcon("pictures/obj3.png"));
-=======
-				map[i][j].setIcon(board.getTheme().getImage(ImageUse.EMPTY));
->>>>>>> origin/master
 				this.add(map[i][j]);
 			}
 		}
@@ -159,7 +140,6 @@ public class CavemanGameFrame extends JFrame implements KeyListener, ActionListe
 			{
 				if(board.get(i, j) == Boardx.EMPTY)
 				{
-<<<<<<< HEAD
 					map[i][j].setIcon(new ImageIcon("pictures/obj3.png"));
 				}
 				else if(board.get(i, j) == Boardx.CAVEMAN)
@@ -181,39 +161,13 @@ public class CavemanGameFrame extends JFrame implements KeyListener, ActionListe
 				else if(board.get(i, j) == Boardx.HOLE)
 				{
 					map[i][j].setIcon(new ImageIcon("pictures/obj5.png"));
-=======
-					map[i][j].setIcon(board.getTheme().getImage(ImageUse.EMPTY));
-				}
-				else if(board.get(i, j) == Boardx.CAVEMAN)
-				{
-					map[i][j].setIcon(board.getTheme().getImage(ImageUse.PLAYER));
-				}
-				else if(board.get(i, j) == Boardx.BOULDER)
-				{
-					map[i][j].setIcon(board.getTheme().getImage(ImageUse.BOULDER));
-				}
-				else if(board.get(i, j) == Boardx.WALL)
-				{
-					map[i][j].setIcon(board.getTheme().getImage(ImageUse.WALL));
-				}
-				else if(board.get(i, j) == Boardx.EXIT)
-				{
-					map[i][j].setIcon(board.getTheme().getImage(ImageUse.EXIT));
-				}
-				else if(board.get(i, j) == Boardx.HOLE)
-				{
-					map[i][j].setIcon(board.getTheme().getImage(ImageUse.HOLE));
->>>>>>> origin/master
 				}
 			}
 		}
 		checkWin();
 	}
 	
-<<<<<<< HEAD
 	@SuppressWarnings("deprecation")
-=======
->>>>>>> origin/master
 	public void checkWin()
 	{
 		if(originalMap[board.getCavemanLoc().getRow()][board.getCavemanLoc().getCol()] == Boardx.EXIT)
@@ -221,7 +175,6 @@ public class CavemanGameFrame extends JFrame implements KeyListener, ActionListe
 			if(Music.playGameSounds)
 			{
 				if(Music.playMusic)
-<<<<<<< HEAD
 					RunCavemanGame.mainSong.stop();
 				RunCavemanGame.victorySong = new Music(RunCavemanGame.victorySongFilename);
 				RunCavemanGame.victorySong.start();
@@ -238,12 +191,6 @@ public class CavemanGameFrame extends JFrame implements KeyListener, ActionListe
 				e.printStackTrace();
 			}
 			
-=======
-					RunCavemanGame.mainSong.stopMusic();
-				RunCavemanGame.victorySong.startMusic();
-			}
-			JOptionPane.showMessageDialog(this, "You win!!!");
->>>>>>> origin/master
 			new HomePage();
 			dispose();
 		}
@@ -295,15 +242,10 @@ public class CavemanGameFrame extends JFrame implements KeyListener, ActionListe
 		}
 		else if(e.getSource() == restart) {
 			try {
-<<<<<<< HEAD
 				IO.openInputFile("options.hao");
 				String s = IO.readLine();
 				IO.closeInputFile();
 				new CavemanGameFrame(new PlayBoard(new MapIO(s).read().getBoard()), a);
-=======
-				String s = ConfigIO.getDefaultConfigIO().getLastFile();
-				new CavemanGameFrame(new PlayBoard(new MapIO(s).read().getBoard()));
->>>>>>> origin/master
 				dispose();
 			} catch (IOException e1) {
 				// TODO Auto-generated catch block
@@ -313,7 +255,6 @@ public class CavemanGameFrame extends JFrame implements KeyListener, ActionListe
 		else if(e.getSource() == newMap) {
 			try {
 				JFileChooser choose = new JFileChooser();
-<<<<<<< HEAD
 				if(IO.openInputFile("options.hao"))
 				{
 					try {
@@ -324,23 +265,15 @@ public class CavemanGameFrame extends JFrame implements KeyListener, ActionListe
 						e1.printStackTrace();
 					}
 				}
-=======
-				choose.setSelectedFile(new File(ConfigIO.getDefaultConfigIO().getLastFile()));
->>>>>>> origin/master
 				FileNameExtensionFilter filter = new FileNameExtensionFilter("Map File (*.map)", "map");
 				choose.addChoosableFileFilter(filter);
 				choose.setAcceptAllFileFilterUsed(false);
 				if (choose.showOpenDialog(this) == JFileChooser.APPROVE_OPTION) {
 					String s = choose.getSelectedFile().getPath();
-<<<<<<< HEAD
 					IO.createOutputFile("options.hao");
 					IO.print(s);
 					IO.closeOutputFile();
 					new CavemanGameFrame(new PlayBoard (new MapIO(s).read().getBoard()), a);
-=======
-					ConfigIO.getDefaultConfigIO().setLastFile(s);
-					new CavemanGameFrame(new PlayBoard (new MapIO(s).read().getBoard()));
->>>>>>> origin/master
 					dispose();
 				}
 			} catch (HeadlessException e1) {

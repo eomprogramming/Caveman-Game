@@ -35,17 +35,6 @@ public class EditBoard extends Boardx
 	}
 	
 	/**
-<<<<<<< HEAD
-=======
-	 * Set the theme of this Boardx
-	 * @param name the name of the theme.
-	 */
-	public void setTheme(String name) {
-		theme = name;
-	}
-	
-	/**
->>>>>>> origin/master
 	 * places an object such as wall, boulder or exit at a certain location
 	 * you cannot place an object on the caveman
 	 * use the constants in the Board class
