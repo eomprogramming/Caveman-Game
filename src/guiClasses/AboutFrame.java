@@ -13,6 +13,11 @@ public class AboutFrame extends JFrame implements ActionListener
 	private JButton backButton;
 	
 	/**
+<<<<<<< HEAD
+=======
+	 * TEST - aly9
+	 * 
+>>>>>>> origin/master
 	 * constructor
 	 */
 	public AboutFrame()

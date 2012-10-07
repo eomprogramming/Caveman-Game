@@ -1,8 +1,17 @@
 package controlClasses;
 
+<<<<<<< HEAD
 public class Boardx
 {
 	public int[][] board;
+=======
+import guiClasses.ImageTheme;
+
+public class Boardx
+{
+	public int[][] board;
+	protected String theme;
+>>>>>>> origin/master
 	
 	public static final int EMPTY = 0;
 	public static final int CAVEMAN = 1;
@@ -40,6 +49,14 @@ public class Boardx
 		this.board = board;
 	}
 	
+<<<<<<< HEAD
+=======
+	public Boardx(Boardx b) {
+		this.board = b.board;
+		this.theme = b.theme;
+	}
+	
+>>>>>>> origin/master
 	/**
 	 * 
 	 * @return location of caveman(use the constants in this class)
@@ -113,6 +130,21 @@ public class Boardx
 	}
 	
 	/**
+<<<<<<< HEAD
+=======
+	 * Get the theme with which to display the board.
+	 * @return The ImageTheme object corresponding to the theme.
+	 */
+	public ImageTheme getTheme() {
+		if (theme == null) {
+			return ImageTheme.getDefaultTheme();
+		} else {
+			return ImageTheme.getThemeByName(theme);
+		}
+	}
+	
+	/**
+>>>>>>> origin/master
 	 * on a valid board:
 	 * -there are only numbers from 0-4 inclusive
 	 * -there is only one caveman

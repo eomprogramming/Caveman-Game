@@ -24,6 +24,13 @@ public class PlayBoard extends Boardx
 		super(board);
 	}
 	
+<<<<<<< HEAD
+=======
+	public PlayBoard(Boardx b) {
+		super(b);
+	}
+	
+>>>>>>> origin/master
 	/**
 	 * pushes the boulder at a certain location in a certain direction(use the constants in the Board class)
 	 * @param location
@@ -123,8 +130,12 @@ public class PlayBoard extends Boardx
 				{
 					if(Music.playGameSounds)
 					{
+<<<<<<< HEAD
 						RunCavemanGame.boulderPush = new Music(RunCavemanGame.pushingSound);
 						RunCavemanGame.boulderPush.start();
+=======
+						RunCavemanGame.boulderPush.startMusic();
+>>>>>>> origin/master
 					}
 					board[l.getRow()][l.getCol()+1]=CAVEMAN;
 					board[l.getRow()][l.getCol()]=EMPTY;
@@ -142,8 +153,12 @@ public class PlayBoard extends Boardx
 				{
 					if(Music.playGameSounds)
 					{
+<<<<<<< HEAD
 						RunCavemanGame.boulderPush = new Music(RunCavemanGame.pushingSound);
 						RunCavemanGame.boulderPush.start();
+=======
+						RunCavemanGame.boulderPush.startMusic();
+>>>>>>> origin/master
 					}
 					board[l.getRow()][l.getCol()-1]=CAVEMAN;
 					board[l.getRow()][l.getCol()]=EMPTY;
@@ -161,8 +176,12 @@ public class PlayBoard extends Boardx
 				{
 					if(Music.playGameSounds)
 					{
+<<<<<<< HEAD
 						RunCavemanGame.boulderPush = new Music(RunCavemanGame.pushingSound);
 						RunCavemanGame.boulderPush.start();
+=======
+						RunCavemanGame.boulderPush.startMusic();
+>>>>>>> origin/master
 					}
 					board[l.getRow()+1][l.getCol()]=CAVEMAN;
 					board[l.getRow()][l.getCol()]=EMPTY;
@@ -180,8 +199,12 @@ public class PlayBoard extends Boardx
 				{
 					if(Music.playGameSounds)
 					{
+<<<<<<< HEAD
 						RunCavemanGame.boulderPush = new Music(RunCavemanGame.pushingSound);
 						RunCavemanGame.boulderPush.start();
+=======
+						RunCavemanGame.boulderPush.startMusic();
+>>>>>>> origin/master
 					}
 					board[l.getRow()-1][l.getCol()]=CAVEMAN;
 					board[l.getRow()][l.getCol()]=EMPTY;

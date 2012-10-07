@@ -5,14 +5,20 @@ import java.awt.HeadlessException;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
+<<<<<<< HEAD
 import java.io.FileNotFoundException;
+=======
+>>>>>>> origin/master
 import java.io.IOException;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JFileChooser;
+<<<<<<< HEAD
 import javax.swing.JOptionPane;
+=======
+>>>>>>> origin/master
 import javax.swing.filechooser.FileNameExtensionFilter;
 
 import controlClasses.*;
@@ -83,6 +89,7 @@ public class HomePage extends JFrame implements ActionListener
 		version.setBounds(20, 300, 150, 20);
 		add(version);
 		
+<<<<<<< HEAD
 		if(IO.readObject("tournament.hao") == null)
 		{
 			String name = JOptionPane.showInputDialog("what is your name?");
@@ -95,6 +102,8 @@ public class HomePage extends JFrame implements ActionListener
 			}
 		}
 		
+=======
+>>>>>>> origin/master
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		setVisible(true);
 	}
@@ -108,6 +117,7 @@ public class HomePage extends JFrame implements ActionListener
 		if(o == playGame) {
 			try {
 				JFileChooser choose = new JFileChooser();
+<<<<<<< HEAD
 				if(IO.openInputFile("options.hao"))
 				{
 					try {
@@ -118,11 +128,16 @@ public class HomePage extends JFrame implements ActionListener
 						e1.printStackTrace();
 					}
 				}
+=======
+				choose.setSelectedFile(new
+						File(ConfigIO.getDefaultConfigIO().getLastFile()));
+>>>>>>> origin/master
 				FileNameExtensionFilter filter = new FileNameExtensionFilter("Map File (*.map)", "map");
 				choose.addChoosableFileFilter(filter);
 				choose.setAcceptAllFileFilterUsed(false);
 				if (choose.showOpenDialog(this) == JFileChooser.APPROVE_OPTION) {
 					String s = choose.getSelectedFile().getPath();
+<<<<<<< HEAD
 					IO.createOutputFile("options.hao");
 					IO.print(s);
 					IO.closeOutputFile();
@@ -130,6 +145,11 @@ public class HomePage extends JFrame implements ActionListener
 						new CavemanGameFrame(new PlayBoard (new MapIO(s).read().getBoard()), Integer.parseInt(choose.getSelectedFile().getName().substring(0, 1)));
 						dispose();
 					}catch(NullPointerException exp){}
+=======
+					ConfigIO.getDefaultConfigIO().setLastFile(s);
+						new CavemanGameFrame(new PlayBoard (new MapIO(s).read()));
+						dispose();
+>>>>>>> origin/master
 				}
 			} catch (HeadlessException e1) {
 				// TODO Auto-generated catch block
@@ -150,6 +170,7 @@ public class HomePage extends JFrame implements ActionListener
 		else if(o == editMap)
 		{
 			JFileChooser choose = new JFileChooser();
+<<<<<<< HEAD
 			if(IO.openInputFile("options.hao"))
 			{
 				try {
@@ -160,18 +181,30 @@ public class HomePage extends JFrame implements ActionListener
 					e1.printStackTrace();
 				}
 			}
+=======
+			choose.setSelectedFile(new
+					File(ConfigIO.getDefaultConfigIO().getLastFile()));
+>>>>>>> origin/master
 			//choose.setSelectedFile(file);
 			FileNameExtensionFilter filter = new FileNameExtensionFilter("Map File (*.map)", "map");
 			choose.addChoosableFileFilter(filter);
 			choose.setAcceptAllFileFilterUsed(false);
 			if (choose.showOpenDialog(this) == JFileChooser.APPROVE_OPTION) {
 				String s = choose.getSelectedFile().getPath();
+<<<<<<< HEAD
 				IO.createOutputFile("options.hao");
 				IO.print(s);
 				IO.closeOutputFile();
 				System.out.println(s);
 				try {
 					if(s.equals(""))
+=======
+				ConfigIO.getDefaultConfigIO().setLastFile(s);
+				System.out.println(s);
+				try {
+					if(s.equals("")||s.lastIndexOf(".")<0
+							||!s.substring(s.lastIndexOf("."),s.length()).equals(".map"))
+>>>>>>> origin/master
 						new MapEditorFrame(new EditBoard(), null);
 					else
 					{
@@ -197,6 +230,17 @@ public class HomePage extends JFrame implements ActionListener
 			dispose();
 		}
 		else if(o == quit) {
+<<<<<<< HEAD
+=======
+			System.out.println(System.getProperty("user.home"));
+			try {
+				ConfigIO.getDefaultConfigIO().write();
+			} catch (IOException e1) {
+				// Oh well.
+				System.exit(1);
+				System.out.println("Die");
+			}
+>>>>>>> origin/master
 			System.exit(0);
 		}
 	}
