@@ -99,6 +99,6 @@ public class LevelScreen extends Activity implements OnClickListener{
 
 	public void onClick(View v) {
 		Options.currentMap = v.getId();
-		startActivity(new Intent("com.alyhassan.caveman.LAUNCHGAME"));
+		startActivity(new Intent("com.caveman.LAUNCHGAME"));
 	}
 }
